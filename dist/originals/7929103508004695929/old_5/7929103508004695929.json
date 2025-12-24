@@ -1,0 +1,105 @@
+{
+    "SHEETNAME": "7929103508004695929",
+    "DEFAULTMINBBOX": [
+        264,
+        264
+    ],
+    "DETAILS": [
+        {
+            "ID": "88059ee6d871fcd762be8bc6052e43f6",
+            "DESCRIPTION": {},
+            "SearchBBOX": [
+                1319,
+                327,
+                1528,
+                536
+            ],
+            "ExpandedBBOX": [
+                1292,
+                300,
+                1556,
+                564
+            ]
+        },
+        {
+            "ID": "f404a8f4d67a6b6c35846114a1b27513",
+            "DESCRIPTION": {},
+            "SearchBBOX": [
+                1043,
+                327,
+                1228,
+                512
+            ],
+            "ExpandedBBOX": [
+                1004,
+                288,
+                1268,
+                552
+            ]
+        },
+        {
+            "ID": "5a456941aaf3dce8d3862387975cc57e",
+            "DESCRIPTION": {},
+            "SearchBBOX": [
+                1611,
+                335,
+                1808,
+                504
+            ],
+            "ExpandedBBOX": [
+                1577,
+                300,
+                1841,
+                564
+            ]
+        },
+        {
+            "ID": "53fb5319a4806a93ec4ca2fbb83e4b32",
+            "DESCRIPTION": {},
+            "SearchBBOX": [
+                1339,
+                68,
+                1496,
+                213
+            ],
+            "ExpandedBBOX": [
+                1286,
+                9,
+                1550,
+                273
+            ]
+        },
+        {
+            "ID": "8339b867929094460ea3c92552ea0e42",
+            "DESCRIPTION": {},
+            "SearchBBOX": [
+                1615,
+                47,
+                1800,
+                225
+            ],
+            "ExpandedBBOX": [
+                1576,
+                4,
+                1840,
+                268
+            ]
+        },
+        {
+            "ID": "027b46c9073efda9b27fdffb198b14c0",
+            "DESCRIPTION": {},
+            "SearchBBOX": [
+                1043,
+                59,
+                1224,
+                212
+            ],
+            "ExpandedBBOX": [
+                1002,
+                4,
+                1266,
+                268
+            ]
+        }
+    ]
+}

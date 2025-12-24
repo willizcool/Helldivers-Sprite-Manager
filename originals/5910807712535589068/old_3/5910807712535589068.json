@@ -1,0 +1,1369 @@
+{
+    "SHEETNAME": "5910807712535589068",
+    "DEFAULTMINBBOX": [
+        264,
+        264
+    ],
+    "DETAILS": [
+        {
+            "ID": "176d495e3f289f313d3f0e790eb22d00",
+            "DESCRIPTION": {},
+            "SearchBBOX": [
+                39,
+                1111,
+                247,
+                1286
+            ],
+            "ExpandedBBOX": [
+                12.0,
+                1069.0,
+                276.0,
+                1333.0
+            ]
+        },
+        {
+            "ID": "824976db25299180b334d5b3a1c73277",
+            "DESCRIPTION": {},
+            "SearchBBOX": [
+                39,
+                1423,
+                248,
+                1568
+            ],
+            "ExpandedBBOX": [
+                11.0,
+                1359.0,
+                275.0,
+                1623.0
+            ]
+        },
+        {
+            "ID": "429e2d482e8fdada35a98431161d66e3",
+            "DESCRIPTION": {},
+            "SearchBBOX": [
+                313,
+                1409,
+                550,
+                1564
+            ],
+            "ExpandedBBOX": [
+                301.0,
+                1360.0,
+                565.0,
+                1624.0
+            ]
+        },
+        {
+            "ID": "3870b6489775611da5571514ef3bb8b0",
+            "DESCRIPTION": {},
+            "SearchBBOX": [
+                335,
+                1111,
+                529,
+                1292
+            ],
+            "ExpandedBBOX": [
+                300,
+                1070,
+                564,
+                1334
+            ]
+        },
+        {
+            "ID": "aa855d9875fdbcbfd34a35b94b97629e",
+            "DESCRIPTION": {},
+            "SearchBBOX": [
+                615,
+                1135,
+                825,
+                1276
+            ],
+            "ExpandedBBOX": [
+                588.0,
+                1071.0,
+                852.0,
+                1335.0
+            ]
+        },
+        {
+            "ID": "9565df87e8122cf8a6e1a1de3114be28",
+            "DESCRIPTION": {},
+            "SearchBBOX": [
+                903,
+                1123,
+                1112,
+                1284
+            ],
+            "ExpandedBBOX": [
+                876,
+                1072,
+                1140,
+                1336
+            ]
+        },
+        {
+            "ID": "b3364997f1012c22beaf05a48dc5ecfe",
+            "DESCRIPTION": {},
+            "SearchBBOX": [
+                1191,
+                1131,
+                1403,
+                1285
+            ],
+            "ExpandedBBOX": [
+                1165,
+                1076,
+                1429,
+                1340
+            ]
+        },
+        {
+            "ID": "719bb3f74d8aae9f6a7733ace43e1327",
+            "DESCRIPTION": {},
+            "SearchBBOX": [
+                1479,
+                1111,
+                1688,
+                1293
+            ],
+            "ExpandedBBOX": [
+                1450.0,
+                1075.0,
+                1714.0,
+                1339.0
+            ]
+        },
+        {
+            "ID": "59bd78006677308713ef5c988898106e",
+            "DESCRIPTION": {},
+            "SearchBBOX": [
+                1763,
+                1123,
+                1981,
+                1294
+            ],
+            "ExpandedBBOX": [
+                1735.0,
+                1075.0,
+                1999.0,
+                1339.0
+            ]
+        },
+        {
+            "ID": "f2fbc442dbd5da966e4f9ea744417bb7",
+            "DESCRIPTION": {},
+            "SearchBBOX": [
+                2155,
+                899,
+                2356,
+                1084
+            ],
+            "ExpandedBBOX": [
+                2124,
+                860,
+                2388,
+                1124
+            ]
+        },
+        {
+            "ID": "2d7aa265946e6a6d5cfaa3ee7a4d205c",
+            "DESCRIPTION": {},
+            "SearchBBOX": [
+                2495,
+                771,
+                2624,
+                940
+            ],
+            "ExpandedBBOX": [
+                2428,
+                724,
+                2692,
+                988
+            ]
+        },
+        {
+            "ID": "c0086539d2b040745e997c4823da488d",
+            "DESCRIPTION": {},
+            "SearchBBOX": [
+                2787,
+                767,
+                2908,
+                940
+            ],
+            "ExpandedBBOX": [
+                2716,
+                722,
+                2980,
+                986
+            ]
+        },
+        {
+            "ID": "7d6fd47acc038da186596fc7316396d2",
+            "DESCRIPTION": {},
+            "SearchBBOX": [
+                3035,
+                759,
+                3236,
+                940
+            ],
+            "ExpandedBBOX": [
+                3004,
+                718,
+                3268,
+                982
+            ]
+        },
+        {
+            "ID": "c6189b934be1f1782db521a44706063b",
+            "DESCRIPTION": {},
+            "SearchBBOX": [
+                2054,
+                1219,
+                2264,
+                1372
+            ],
+            "ExpandedBBOX": [
+                2027,
+                1164,
+                2291,
+                1428
+            ]
+        },
+        {
+            "ID": "93fc9e64ea0f987b5d591373463592ef",
+            "DESCRIPTION": {},
+            "SearchBBOX": [
+                2435,
+                1051,
+                2653,
+                1218
+            ],
+            "ExpandedBBOX": [
+                2412,
+                1003,
+                2676,
+                1267
+            ]
+        },
+        {
+            "ID": "57336df4e21801b144ec68250648e7a9",
+            "DESCRIPTION": {},
+            "SearchBBOX": [
+                2727,
+                1071,
+                2936,
+                1218
+            ],
+            "ExpandedBBOX": [
+                2700,
+                1013,
+                2964,
+                1277
+            ]
+        },
+        {
+            "ID": "fec3d8017c0b622c5558349c50615c7f",
+            "DESCRIPTION": {},
+            "SearchBBOX": [
+                3015,
+                1079,
+                3224,
+                1209
+            ],
+            "ExpandedBBOX": [
+                2988,
+                1012,
+                3252,
+                1276
+            ]
+        },
+        {
+            "ID": "93c77e5cd6f056d9b22b0d419ba963c1",
+            "DESCRIPTION": {},
+            "SearchBBOX": [
+                3719,
+                995,
+                3896,
+                1179
+            ],
+            "ExpandedBBOX": [
+                3676,
+                955,
+                3940,
+                1219
+            ]
+        },
+        {
+            "ID": "93c77e5cd6f056d9b22b0d419ba963c1",
+            "DESCRIPTION": {},
+            "SearchBBOX": [
+                3335,
+                1011,
+                3512,
+                1195
+            ],
+            "ExpandedBBOX": [
+                3292,
+                971,
+                3556,
+                1235
+            ]
+        },
+        {
+            "ID": "fd78a6a455016b1de2a8dcca3d7e8f67",
+            "DESCRIPTION": {},
+            "SearchBBOX": [
+                3607,
+                1287,
+                3817,
+                1464
+            ],
+            "ExpandedBBOX": [
+                3580,
+                1244,
+                3844,
+                1508
+            ]
+        },
+        {
+            "ID": "6e17824ddc815c84a1f9ae8482bc83cd",
+            "DESCRIPTION": {},
+            "SearchBBOX": [
+                3306,
+                1313,
+                3509,
+                1476
+            ],
+            "ExpandedBBOX": [
+                3276,
+                1263,
+                3540,
+                1527
+            ]
+        },
+        {
+            "ID": "b27cdc9ecc31c3c066c2e693a235fb49",
+            "DESCRIPTION": {},
+            "SearchBBOX": [
+                2074,
+                1483,
+                2245,
+                1652
+            ],
+            "ExpandedBBOX": [
+                2028,
+                1436,
+                2292,
+                1700
+            ]
+        },
+        {
+            "ID": "b27cdc9ecc31c3c066c2e693a235fb49",
+            "DESCRIPTION": {},
+            "SearchBBOX": [
+                3226,
+                1595,
+                3397,
+                1764
+            ],
+            "ExpandedBBOX": [
+                3180,
+                1548,
+                3444,
+                1812
+            ]
+        },
+        {
+            "ID": "a316f9e610000be0280d6eaa942dcf65",
+            "DESCRIPTION": {},
+            "SearchBBOX": [
+                2923,
+                1627,
+                3112,
+                1800
+            ],
+            "ExpandedBBOX": [
+                2889.0,
+                1581.0,
+                3153.0,
+                1845.0
+            ]
+        },
+        {
+            "ID": "c3e891cd7d467fedc72b228a0ebf748f",
+            "DESCRIPTION": {},
+            "SearchBBOX": [
+                2919,
+                1367,
+                3128,
+                1500
+            ],
+            "ExpandedBBOX": [
+                2890.0,
+                1296.0,
+                3154.0,
+                1560.0
+            ]
+        },
+        {
+            "ID": "b3b5483675afaf880fac71796c44f190",
+            "DESCRIPTION": {},
+            "SearchBBOX": [
+                2635,
+                1335,
+                2836,
+                1521
+            ],
+            "ExpandedBBOX": [
+                2604,
+                1296,
+                2868,
+                1560
+            ]
+        },
+        {
+            "ID": "ae02ff732f03e955d6d2ffd2d3150a2d",
+            "DESCRIPTION": {},
+            "SearchBBOX": [
+                2359,
+                1331,
+                2536,
+                1516
+            ],
+            "ExpandedBBOX": [
+                2316,
+                1292,
+                2580,
+                1556
+            ]
+        },
+        {
+            "ID": "e8c68ff0a392563126da6a6f3ee2f753",
+            "DESCRIPTION": {},
+            "SearchBBOX": [
+                2347,
+                1627,
+                2536,
+                1800
+            ],
+            "ExpandedBBOX": [
+                2314.0,
+                1580.0,
+                2578.0,
+                1844.0
+            ]
+        },
+        {
+            "ID": "202d81894119207c53ad94e5f4594dcb",
+            "DESCRIPTION": {},
+            "SearchBBOX": [
+                2654,
+                1627,
+                2824,
+                1772
+            ],
+            "ExpandedBBOX": [
+                2605.0,
+                1581.0,
+                2869.0,
+                1845.0
+            ]
+        },
+        {
+            "ID": "5458eeb81f8c38d08633f08886cc0563",
+            "DESCRIPTION": {},
+            "SearchBBOX": [
+                2063,
+                1791,
+                2256,
+                1956
+            ],
+            "ExpandedBBOX": [
+                2028,
+                1742,
+                2292,
+                2006
+            ]
+        },
+        {
+            "ID": "5c195f23fffacb04dcd91425685324e6",
+            "DESCRIPTION": {},
+            "SearchBBOX": [
+                1775,
+                1710,
+                1968,
+                1876
+            ],
+            "ExpandedBBOX": [
+                1740,
+                1661,
+                2004,
+                1925
+            ]
+        },
+        {
+            "ID": "a798a73af16c477f301216b0a86bb412",
+            "DESCRIPTION": {},
+            "SearchBBOX": [
+                1779,
+                1403,
+                1960,
+                1548
+            ],
+            "ExpandedBBOX": [
+                1734.0,
+                1355.0,
+                1998.0,
+                1619.0
+            ]
+        },
+        {
+            "ID": "58d8e8525dfb364a4d89e4c700624165",
+            "DESCRIPTION": {},
+            "SearchBBOX": [
+                1487,
+                1403,
+                1672,
+                1572
+            ],
+            "ExpandedBBOX": [
+                1448,
+                1356,
+                1712,
+                1620
+            ]
+        },
+        {
+            "ID": "50dd8633a682c2d122c4875a7839bb12",
+            "DESCRIPTION": {},
+            "SearchBBOX": [
+                1199,
+                1403,
+                1384,
+                1572
+            ],
+            "ExpandedBBOX": [
+                1160,
+                1356,
+                1424,
+                1620
+            ]
+        },
+        {
+            "ID": "f9619c2a0972d86ccab49362fe0e93da",
+            "DESCRIPTION": {},
+            "SearchBBOX": [
+                911,
+                1391,
+                1096,
+                1568
+            ],
+            "ExpandedBBOX": [
+                875.0,
+                1357.0,
+                1139.0,
+                1621.0
+            ]
+        },
+        {
+            "ID": "00760220cc8ed55fc1969f119b4905e1",
+            "DESCRIPTION": {},
+            "SearchBBOX": [
+                623,
+                1403,
+                808,
+                1580
+            ],
+            "ExpandedBBOX": [
+                584,
+                1360,
+                848,
+                1624
+            ]
+        },
+        {
+            "ID": "b20254ddc2ba5c87ee1a123d480b4c44",
+            "DESCRIPTION": {},
+            "SearchBBOX": [
+                59,
+                1707,
+                228,
+                1856
+            ],
+            "ExpandedBBOX": [
+                12,
+                1650,
+                276,
+                1914
+            ]
+        },
+        {
+            "ID": "093b2a98b3c586b0f69815ae92264271",
+            "DESCRIPTION": {},
+            "SearchBBOX": [
+                327,
+                1671,
+                536,
+                1880
+            ],
+            "ExpandedBBOX": [
+                300,
+                1644,
+                564,
+                1908
+            ]
+        },
+        {
+            "ID": "a814c24beb2ba89a4c798c5425b22471",
+            "DESCRIPTION": {},
+            "SearchBBOX": [
+                623,
+                1683,
+                816,
+                1876
+            ],
+            "ExpandedBBOX": [
+                588,
+                1648,
+                852,
+                1912
+            ]
+        },
+        {
+            "ID": "9baba6fcf20c9e759358450281cefe01",
+            "DESCRIPTION": {},
+            "SearchBBOX": [
+                911,
+                1695,
+                1104,
+                1876
+            ],
+            "ExpandedBBOX": [
+                876.0,
+                1649.0,
+                1140.0,
+                1913.0
+            ]
+        },
+        {
+            "ID": "c86a009dd1a106236b3ec0a78eb68877",
+            "DESCRIPTION": {},
+            "SearchBBOX": [
+                1487,
+                1683,
+                1680,
+                1876
+            ],
+            "ExpandedBBOX": [
+                1452,
+                1648,
+                1716,
+                1912
+            ]
+        },
+        {
+            "ID": "d767be1f827f38f1aa42280c3822b384",
+            "DESCRIPTION": {},
+            "SearchBBOX": [
+                51,
+                1971,
+                237,
+                2156
+            ],
+            "ExpandedBBOX": [
+                13.0,
+                1931.0,
+                277.0,
+                2195.0
+            ]
+        },
+        {
+            "ID": "171a5a5ddf550cc29b039f6113061380",
+            "DESCRIPTION": {},
+            "SearchBBOX": [
+                339,
+                1971,
+                525,
+                2156
+            ],
+            "ExpandedBBOX": [
+                300,
+                1932,
+                564,
+                2196
+            ]
+        },
+        {
+            "ID": "dd10b27b789a4f2fd933402a75ccb787",
+            "DESCRIPTION": {},
+            "SearchBBOX": [
+                627,
+                1971,
+                813,
+                2156
+            ],
+            "ExpandedBBOX": [
+                588,
+                1932,
+                852,
+                2196
+            ]
+        },
+        {
+            "ID": "08011e3a6bd6386181ccd0a390bc84fb",
+            "DESCRIPTION": {},
+            "SearchBBOX": [
+                915,
+                1971,
+                1101,
+                2156
+            ],
+            "ExpandedBBOX": [
+                876,
+                1932,
+                1140,
+                2196
+            ]
+        },
+        {
+            "ID": "41b712c2f53ae6f55714c21d91afc38f",
+            "DESCRIPTION": {},
+            "SearchBBOX": [
+                1203,
+                1971,
+                1389,
+                2156
+            ],
+            "ExpandedBBOX": [
+                1164,
+                1932,
+                1428,
+                2196
+            ]
+        },
+        {
+            "ID": "6d6e2486f04a0018d3d11ccac8ff877d",
+            "DESCRIPTION": {},
+            "SearchBBOX": [
+                1491,
+                1971,
+                1677,
+                2156
+            ],
+            "ExpandedBBOX": [
+                1452,
+                1932,
+                1716,
+                2196
+            ]
+        },
+        {
+            "ID": "82101ed325ef39f52e8400c64f753bb5",
+            "DESCRIPTION": {},
+            "SearchBBOX": [
+                1199,
+                1683,
+                1392,
+                1876
+            ],
+            "ExpandedBBOX": [
+                1164,
+                1648,
+                1428,
+                1912
+            ]
+        },
+        {
+            "ID": "2e3a067ff121f65e21488a15e5f904f5",
+            "DESCRIPTION": {},
+            "SearchBBOX": [
+                1779,
+                1971,
+                1965,
+                2156
+            ],
+            "ExpandedBBOX": [
+                1740,
+                1932,
+                2004,
+                2196
+            ]
+        },
+        {
+            "ID": "82f6551dd02f980d409c56c5c70a3d0f",
+            "DESCRIPTION": {},
+            "SearchBBOX": [
+                2066,
+                2051,
+                2253,
+                2236
+            ],
+            "ExpandedBBOX": [
+                2028,
+                2012,
+                2292,
+                2276
+            ]
+        },
+        {
+            "ID": "bdf387119968396141739c1e54e42e2d",
+            "DESCRIPTION": {},
+            "SearchBBOX": [
+                47,
+                2555,
+                240,
+                2724
+            ],
+            "ExpandedBBOX": [
+                12,
+                2508,
+                276,
+                2772
+            ]
+        },
+        {
+            "ID": "d333c3705f927bdb45bee315d38997cc",
+            "DESCRIPTION": {},
+            "SearchBBOX": [
+                335,
+                2555,
+                528,
+                2724
+            ],
+            "ExpandedBBOX": [
+                300,
+                2508,
+                564,
+                2772
+            ]
+        },
+        {
+            "ID": "5f80f0759eb0c91b811ba8fe0eca740b",
+            "DESCRIPTION": {},
+            "SearchBBOX": [
+                623,
+                2555,
+                816,
+                2724
+            ],
+            "ExpandedBBOX": [
+                588,
+                2508,
+                852,
+                2772
+            ]
+        },
+        {
+            "ID": "5634d14660bc65bdd9fba3e24b201d0a",
+            "DESCRIPTION": {},
+            "SearchBBOX": [
+                895,
+                2559,
+                1120,
+                2752
+            ],
+            "ExpandedBBOX": [
+                877.0,
+                2509.0,
+                1141.0,
+                2773.0
+            ]
+        },
+        {
+            "ID": "7f3167a63224210272a63c5ff031808b",
+            "DESCRIPTION": {},
+            "SearchBBOX": [
+                1183,
+                2543,
+                1408,
+                2752
+            ],
+            "ExpandedBBOX": [
+                1163.0,
+                2510.0,
+                1427.0,
+                2774.0
+            ]
+        },
+        {
+            "ID": "8554a8eff14b71c3cf0777255ce0cab0",
+            "DESCRIPTION": {},
+            "SearchBBOX": [
+                1759,
+                2567,
+                1984,
+                2752
+            ],
+            "ExpandedBBOX": [
+                1740.0,
+                2510.0,
+                2004.0,
+                2774.0
+            ]
+        },
+        {
+            "ID": "c53359c24a9e3fdc2ad8cea6cb5c5ff7",
+            "DESCRIPTION": {},
+            "SearchBBOX": [
+                2047,
+                2675,
+                2272,
+                2832
+            ],
+            "ExpandedBBOX": [
+                2029.0,
+                2588.0,
+                2293.0,
+                2852.0
+            ]
+        },
+        {
+            "ID": "052bc68e3f82e80d214962acb61c2548",
+            "DESCRIPTION": {},
+            "SearchBBOX": [
+                2351,
+                1917,
+                2544,
+                2100
+            ],
+            "ExpandedBBOX": [
+                2316,
+                1877,
+                2580,
+                2141
+            ]
+        },
+        {
+            "ID": "9ba89b834790e822da4f22224db860e3",
+            "DESCRIPTION": {},
+            "SearchBBOX": [
+                2639,
+                1910,
+                2832,
+                2100
+            ],
+            "ExpandedBBOX": [
+                2604,
+                1873,
+                2868,
+                2137
+            ]
+        },
+        {
+            "ID": "53d9d4eebe6448b6efda34ea7d9604ff",
+            "DESCRIPTION": {},
+            "SearchBBOX": [
+                2343,
+                2183,
+                2552,
+                2392
+            ],
+            "ExpandedBBOX": [
+                2316,
+                2156,
+                2580,
+                2420
+            ]
+        },
+        {
+            "ID": "c1300ff05fdb1039f847e9a15f56aa23",
+            "DESCRIPTION": {},
+            "SearchBBOX": [
+                2343,
+                2491,
+                2552,
+                2660
+            ],
+            "ExpandedBBOX": [
+                2316,
+                2444,
+                2580,
+                2708
+            ]
+        },
+        {
+            "ID": "3130f1cdd0995d56f88abcd8d38c3cb7",
+            "DESCRIPTION": {},
+            "SearchBBOX": [
+                2631,
+                2183,
+                2840,
+                2392
+            ],
+            "ExpandedBBOX": [
+                2604,
+                2156,
+                2868,
+                2420
+            ]
+        },
+        {
+            "ID": "1cd02ee585de5971996dde4bf587bbab",
+            "DESCRIPTION": {},
+            "SearchBBOX": [
+                3495,
+                2135,
+                3704,
+                2344
+            ],
+            "ExpandedBBOX": [
+                3468,
+                2108,
+                3732,
+                2372
+            ]
+        },
+        {
+            "ID": "05430ede98b9f96c5ac004e92233db6e",
+            "DESCRIPTION": {},
+            "SearchBBOX": [
+                3783,
+                2135,
+                3992,
+                2344
+            ],
+            "ExpandedBBOX": [
+                3756,
+                2108,
+                4020,
+                2372
+            ]
+        },
+        {
+            "ID": "f094f320c6e1518401ff0b2e3f3adb30",
+            "DESCRIPTION": {},
+            "SearchBBOX": [
+                3791,
+                1886,
+                3984,
+                2052
+            ],
+            "ExpandedBBOX": [
+                3753.0,
+                1822.0,
+                4017.0,
+                2086.0
+            ]
+        },
+        {
+            "ID": "af46e3ae61b0be5bcced7c76eca5d971",
+            "DESCRIPTION": {},
+            "SearchBBOX": [
+                3503,
+                1859,
+                3696,
+                2052
+            ],
+            "ExpandedBBOX": [
+                3468,
+                1824,
+                3732,
+                2088
+            ]
+        },
+        {
+            "ID": "35f9d82e0a53a4db1f652ee086bcd660",
+            "DESCRIPTION": {},
+            "SearchBBOX": [
+                3215,
+                1875,
+                3408,
+                2068
+            ],
+            "ExpandedBBOX": [
+                3180,
+                1840,
+                3444,
+                2104
+            ]
+        },
+        {
+            "ID": "d8e7f02dd96d4e7943793e93f61b3541",
+            "DESCRIPTION": {},
+            "SearchBBOX": [
+                2927,
+                1915,
+                3120,
+                2100
+            ],
+            "ExpandedBBOX": [
+                2892,
+                1876,
+                3156,
+                2140
+            ]
+        },
+        {
+            "ID": "e97c7379ccc3e3033669c65eb48f69a4",
+            "DESCRIPTION": {},
+            "SearchBBOX": [
+                3231,
+                2459,
+                3408,
+                2628
+            ],
+            "ExpandedBBOX": [
+                3182.0,
+                2407.0,
+                3446.0,
+                2671.0
+            ]
+        },
+        {
+            "ID": "b69d11440f4d613ecf5b52a2887d1636",
+            "DESCRIPTION": {},
+            "SearchBBOX": [
+                2631,
+                2491,
+                2840,
+                2660
+            ],
+            "ExpandedBBOX": [
+                2604,
+                2444,
+                2868,
+                2708
+            ]
+        },
+        {
+            "ID": "92a7a8950459f37848a216102751b4a2",
+            "DESCRIPTION": {},
+            "SearchBBOX": [
+                2919,
+                2491,
+                3128,
+                2660
+            ],
+            "ExpandedBBOX": [
+                2892,
+                2444,
+                3156,
+                2708
+            ]
+        },
+        {
+            "ID": "407c32e4d38ba386bdbf412c074a1a4c",
+            "DESCRIPTION": {},
+            "SearchBBOX": [
+                3503,
+                2443,
+                3688,
+                2612
+            ],
+            "ExpandedBBOX": [
+                3469.0,
+                2396.0,
+                3733.0,
+                2660.0
+            ]
+        },
+        {
+            "ID": "99ff6e868a05470f51266738c7519ad3",
+            "DESCRIPTION": {},
+            "SearchBBOX": [
+                3787,
+                2443,
+                3984,
+                2612
+            ],
+            "ExpandedBBOX": [
+                3754,
+                2396,
+                4018,
+                2660
+            ]
+        },
+        {
+            "ID": "c8e5e5a851147dbb0eda126d13dbef31",
+            "DESCRIPTION": {},
+            "SearchBBOX": [
+                3207,
+                2747,
+                3416,
+                2916
+            ],
+            "ExpandedBBOX": [
+                3183.0,
+                2697.0,
+                3447.0,
+                2961.0
+            ]
+        },
+        {
+            "ID": "1813fd5dbba334c14692941e39a6293b",
+            "DESCRIPTION": {},
+            "SearchBBOX": [
+                3787,
+                2731,
+                3976,
+                2900
+            ],
+            "ExpandedBBOX": [
+                3750,
+                2684,
+                4014,
+                2948
+            ]
+        },
+        {
+            "ID": "1bbb0932b9701c63101ffebcf102671e",
+            "DESCRIPTION": {},
+            "SearchBBOX": [
+                2071,
+                2347,
+                2256,
+                2516
+            ],
+            "ExpandedBBOX": [
+                2032,
+                2300,
+                2296,
+                2564
+            ]
+        },
+        {
+            "ID": "04cea6c0d9628939469ebea461bd994d",
+            "DESCRIPTION": {},
+            "SearchBBOX": [
+                3487,
+                2719,
+                3712,
+                2924
+            ],
+            "ExpandedBBOX": [
+                3466.0,
+                2686.0,
+                3730.0,
+                2950.0
+            ]
+        },
+        {
+            "ID": "dbd4bd01c2ed7ef05cf81a087d5d50fb",
+            "DESCRIPTION": {},
+            "SearchBBOX": [
+                1471,
+                2583,
+                1696,
+                2732
+            ],
+            "ExpandedBBOX": [
+                1451.0,
+                2510.0,
+                1715.0,
+                2774.0
+            ]
+        },
+        {
+            "ID": "f0cdaa4203f2516cf3d1157f83dce5ac",
+            "DESCRIPTION": {},
+            "SearchBBOX": [
+                1191,
+                2247,
+                1400,
+                2456
+            ],
+            "ExpandedBBOX": [
+                1164,
+                2220,
+                1428,
+                2484
+            ]
+        },
+        {
+            "ID": "c5343cbbfc755a88eb55dc042e651754",
+            "DESCRIPTION": {},
+            "SearchBBOX": [
+                903,
+                2247,
+                1112,
+                2456
+            ],
+            "ExpandedBBOX": [
+                876,
+                2220,
+                1140,
+                2484
+            ]
+        },
+        {
+            "ID": "9cb133b4a80d5d7bad7999c59961322e",
+            "DESCRIPTION": {},
+            "SearchBBOX": [
+                615,
+                2247,
+                824,
+                2456
+            ],
+            "ExpandedBBOX": [
+                588,
+                2220,
+                852,
+                2484
+            ]
+        },
+        {
+            "ID": "830a9d1c689b989d15ec6b4ec04405ab",
+            "DESCRIPTION": {},
+            "SearchBBOX": [
+                327,
+                2247,
+                536,
+                2456
+            ],
+            "ExpandedBBOX": [
+                300,
+                2220,
+                564,
+                2484
+            ]
+        },
+        {
+            "ID": "c4ae3342a86d933ecf85d38272c7fa99",
+            "DESCRIPTION": {},
+            "SearchBBOX": [
+                2919,
+                2183,
+                3129,
+                2392
+            ],
+            "ExpandedBBOX": [
+                2892,
+                2156,
+                3156,
+                2420
+            ]
+        },
+        {
+            "ID": "56e72294a72933ef4c8ca856d9f3121a",
+            "DESCRIPTION": {},
+            "SearchBBOX": [
+                39,
+                2247,
+                248,
+                2456
+            ],
+            "ExpandedBBOX": [
+                12,
+                2220,
+                276,
+                2484
+            ]
+        },
+        {
+            "ID": "fc9ebf66717b4f2813f5b98819490f3b",
+            "DESCRIPTION": {},
+            "SearchBBOX": [
+                3207,
+                2151,
+                3416,
+                2360
+            ],
+            "ExpandedBBOX": [
+                3180,
+                2124,
+                3444,
+                2388
+            ]
+        }
+    ]
+}
