@@ -199,7 +199,7 @@
             "SaveID": 30,
             "ID": "b27cdc9ecc31c3c066c2e693a235fb49",
             "DESCRIPTION": "Jump Pack",
-            "Group": "supply",
+            "Group": "None",
             "SearchBBOX": [2650, 1627, 2821, 1796],
             "ExpandedBBOX": [2604, 1580, 2868, 1844]
         },
@@ -208,7 +208,7 @@
             "SaveID": 30,
             "ID": "b27cdc9ecc31c3c066c2e693a235fb49",
             "DESCRIPTION": "Jump Pack",
-            "Group": "supply",
+            "Group": "None",
             "SearchBBOX": [2938, 1627, 3109, 1796],
             "ExpandedBBOX": [2892, 1580, 3156, 1844]
         },
@@ -240,8 +240,8 @@
             "ExpandedBBOX": [300, 1360, 564, 1624]
         },
         {
-            "Order": 13,
-            "SaveID": 40,
+            "Order": 14,
+            "SaveID": 43,
             "ID": "ae02ff732f03e955d6d2ffd2d3150a2d",
             "DESCRIPTION": "Commando",
             "Group": "supply",
@@ -339,11 +339,11 @@
             "ExpandedBBOX": [2028, 1730, 2292, 1994]
         },
         {
-            "Order": 0,
-            "SaveID": 0,
+            "Order": 12,
+            "SaveID": 93,
             "ID": "093b2a98b3c586b0f69815ae92264271",
-            "DESCRIPTION": "",
-            "Group": "None",
+            "DESCRIPTION": "Resupply",
+            "Group": "mission",
             "SearchBBOX": [3783, 1847, 3992, 2056],
             "ExpandedBBOX": [3756, 1820, 4020, 2084]
         },
@@ -577,7 +577,7 @@
             "SaveID": 75,
             "ID": "05430ede98b9f96c5ac004e92233db6e",
             "DESCRIPTION": "Seismic Probe",
-            "Group": "None",
+            "Group": "mission",
             "SearchBBOX": [903, 2247, 1112, 2456],
             "ExpandedBBOX": [876, 2220, 1140, 2484]
         },
@@ -655,10 +655,10 @@
         },
         {
             "Order": 32,
-            "SaveID": 55,
+            "SaveID": 56,
             "ID": "99ff6e868a05470f51266738c7519ad3",
-            "DESCRIPTION": "Directional Shield",
-            "Group": "supply",
+            "DESCRIPTION": "Rocket Sentry",
+            "Group": "defense",
             "SearchBBOX": [2059, 2635, 2256, 2804],
             "ExpandedBBOX": [2026, 2588, 2290, 2852]
         },
@@ -721,7 +721,7 @@
             "SaveID": 73,
             "ID": "9cb133b4a80d5d7bad7999c59961322e",
             "DESCRIPTION": "Hellbomb",
-            "Group": "Mission",
+            "Group": "mission",
             "SearchBBOX": [2343, 2471, 2552, 2680],
             "ExpandedBBOX": [2316, 2444, 2580, 2708]
         },
@@ -739,7 +739,7 @@
             "SaveID": 76,
             "ID": "c4ae3342a86d933ecf85d38272c7fa99",
             "DESCRIPTION": "Orbital Illumination Flare",
-            "Group": "mission",
+            "Group": "None",
             "SearchBBOX": [3495, 2423, 3705, 2632],
             "ExpandedBBOX": [3468, 2396, 3732, 2660]
         },
@@ -899,33 +899,6 @@
         {
             "Order": 0,
             "SaveID": 0,
-            "ID": "e8c68ff0a392563126da6a6f3ee2f753",
-            "DESCRIPTION": "",
-            "Group": "None",
-            "SearchBBOX": [331, 1691, 520, 1864],
-            "ExpandedBBOX": [298, 1644, 562, 1908]
-        },
-        {
-            "Order": 0,
-            "SaveID": 0,
-            "ID": "e8c68ff0a392563126da6a6f3ee2f753",
-            "DESCRIPTION": "",
-            "Group": "None",
-            "SearchBBOX": [331, 1691, 520, 1864],
-            "ExpandedBBOX": [298, 1644, 562, 1908]
-        },
-        {
-            "Order": 0,
-            "SaveID": 0,
-            "ID": "e8c68ff0a392563126da6a6f3ee2f753",
-            "DESCRIPTION": "",
-            "Group": "None",
-            "SearchBBOX": [331, 1691, 520, 1864],
-            "ExpandedBBOX": [298, 1644, 562, 1908]
-        },
-        {
-            "Order": 0,
-            "SaveID": 0,
             "ID": "b16c7e0dd009726a0c42d7d308e4eadc",
             "DESCRIPTION": "Temp Box",
             "Group": "DEFAULT",
@@ -935,11 +908,11 @@
         {
             "Order": 0,
             "SaveID": 0,
-            "ID": "b16c7e0dd009726a0c42d7d308e4eadc",
-            "DESCRIPTION": "Temp Box",
+            "ID": "e748916bb76cc63398b1d9ede1476dd5",
+            "DESCRIPTION": "",
             "Group": "DEFAULT",
-            "SearchBBOX": [3688, 968, 3927, 1207],
-            "ExpandedBBOX": [3676, 956, 3940, 1220]
+            "SearchBBOX": [895, 3147, 1121, 3284],
+            "ExpandedBBOX": [876, 3084, 1140, 3348]
         }
     ]
 }

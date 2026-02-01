@@ -6,14 +6,27 @@ import export_icons as ei
 import subprocess, shutil
 from pathlib import Path
 import IconFinder as IconF
+import add_new_icons as AddIcon
+from tkinterdnd2 import TkinterDnD
+import customtkinter as ctk
+from CTkListbox import *
+from tktooltip import ToolTip
 
-class SheetManagerGUI(tk.Tk):
+fgroundbutton = ("RoyalBlue2", "RoyalBlue4")
+hoverbutton = ("RoyalBlue3", "RoyalBlue3")
+
+class SheetManagerGUI(ctk.CTk, TkinterDnD.DnDWrapper):
     def __init__(self):
         super().__init__()
+        self.TkdndVersion = TkinterDnD._require(self)
+
+        
+        ctk.set_appearance_mode("dark")
+        ctk.set_default_color_theme("dark-blue")
+
 
         self.title("HD2 Sprite Sheet Manager")
-        self.geometry("750x450")
-        self.configure(bg="#e6e6e6")
+        self.geometry("1200x800")
 
         self.sheet_path = Path("./originals")
         self.mod_path = Path("./mods")
@@ -28,7 +41,7 @@ class SheetManagerGUI(tk.Tk):
         self.create_bindings()
 
         self.load_sheet_list()
-        self.load_mod_sheet_list()
+        self.load_mod_sheet_list(reset=True)
 
 
     # ------------------------------- MENU BAR -------------------------------
@@ -46,84 +59,211 @@ class SheetManagerGUI(tk.Tk):
 
     # ------------------------------- TOP BUTTONS -------------------------------
     def create_top_buttons(self):
-        frame = ttk.Frame(self, padding=10)
-        frame.pack(fill="x")
+        frame = ctk.CTkFrame(self)
+        frame.pack(fill="x", anchor="nw",expand=False)
 
-        btn_sheet_frame = ttk.Frame(frame, borderwidth=2, relief="groove")
-        btn_sheet_frame.pack(side="top", padx=10)
+        btn_card_frame = ctk.CTkFrame(frame)
+        btn_card_frame.pack(side="left", padx=10, pady=5, fill="both", expand=True)
 
         # ACTION BUTTONS (start disabled)
-        ttk.Label(btn_sheet_frame, text="Sheet Tools:", font=("Segoe UI", 12, "bold")).pack(side="left", padx=10)
-        self.btn_select_update = ttk.Button(btn_sheet_frame, text="Import Updated Sheet", state="disabled", command=self.update_sheet)
-        self.btn_add_icons = ttk.Button(btn_sheet_frame, text="Modify Icon Positions", state="disabled", command=self.modify_icon_positions)
-        self.btn_export_sheet = ttk.Button(btn_sheet_frame, text="Export Sheet", state="disabled", command=lambda: self.export_sheet(export_icons=False))
-        self.btn_export_icons = ttk.Button(btn_sheet_frame, text="Export Cropped Icons", state="disabled", command=lambda: self.export_sheet(export_icons=True))
-        self.btn_sheet_list = [self.btn_select_update, self.btn_add_icons, self.btn_export_sheet, self.btn_export_icons]
+        ctk.CTkLabel(btn_card_frame, text="Sheet Tools", font=("Segoe UI", 12, "bold")).pack(side="top", padx=10, expand=True)
+        btn_frame = ctk.CTkFrame(btn_card_frame)
+        btn_frame.grid_columnconfigure(0, weight=1)
+        btn_frame.pack(side="top", padx=10, pady=5, fill="both", expand=True)
 
-        btn_mod_frame = ttk.Frame(frame, borderwidth=2, relief="groove")
-        btn_mod_frame.pack(side="top", padx=10)
+        self.btn_select_update = ctk.CTkButton(btn_frame, 
+                                               text="Update Sheet and Mods",
+                                               image = ImageTk.PhotoImage(Image.open("./icons/update.png").resize((20,20))),
+                                               state="disabled", 
+                                               command=self.update_sheet,
+                                               fg_color=("purple1","purple4"),
+                                               hover_color=("purple2","purple3"),
+                                               border_color="black",
+                                               border_width=2)
+        ToolTip(self.btn_select_update, msg="Updates the selected sheet to a new image. Finds new icon positions on the new sheet and updates all currently managed mods to match.", delay=0.5)
+        self.btn_add_icons = ctk.CTkButton(btn_frame, 
+                                           text="Update Icon Positions",
+                                           image = ImageTk.PhotoImage(Image.open("./icons/wrench.png").resize((20,20))),
+                                           state="disabled", 
+                                           command=self.modify_icon_positions,
+                                           fg_color=fgroundbutton,
+                                           hover_color=hoverbutton,
+                                           border_color="black",
+                                           border_width=2)
+        ToolTip(self.btn_add_icons, msg="Capture and name icon positions on the selected sheet. Each icon selected here will be used when finding new positions during a sheet update.", delay=0.5)
+        self.btn_sheet_list = [self.btn_select_update, self.btn_add_icons]
 
-        ttk.Label(btn_mod_frame, text="Mod Tools:", font=("Segoe UI", 12, "bold")).pack(side="left", padx=10)
-        self.btn_import_mod_sheet = ttk.Button(btn_mod_frame, text="Import New Mod Sheet", state="disabled", command=self.import_modded_sheet)
-        self.btn_delete_mod_sheet = ttk.Button(btn_mod_frame, text="Delete Modded Sheet", state="disabled", command=self.delete_modded_sheet)
-        self.btn_export_mod_sheet = ttk.Button(btn_mod_frame, text="Export Mod Sheets", state="disabled", command=lambda: self.export_modded_sheet(export_icons=False))
-        self.btn_export_mod_icons = ttk.Button(btn_mod_frame, text="Export Cropped Mod Icons", state="disabled", command=lambda: self.export_modded_sheet(export_icons=True))
-        self.btn_mod_list = [self.btn_import_mod_sheet, self.btn_delete_mod_sheet, self.btn_export_mod_sheet,self.btn_export_mod_icons]
-        self.btn_mod_sheet_list = [self.btn_import_mod_sheet, self.btn_delete_mod_sheet]
-        self.btn_mod_only_list = [self.btn_export_mod_sheet,self.btn_export_mod_icons]
+        btn_mod_card_frame = ctk.CTkFrame(frame)
+        btn_mod_card_frame.pack(side="left", padx=10, pady=5, fill="both", expand=True, anchor="w")
 
-        for btn in self.btn_sheet_list:
-            btn.pack(side="left", padx=5)
+        ctk.CTkLabel(btn_mod_card_frame, text="Mod Sheet Tools", font=("Segoe UI", 12, "bold")).pack(side="top", padx=10, expand=True)
+        mod_btn_frame = ctk.CTkFrame(btn_mod_card_frame)
+        mod_btn_frame.grid_columnconfigure(0, weight=1)
+        mod_btn_frame.grid_columnconfigure(1, weight=1)
+        mod_btn_frame.pack(side="top", padx=10, pady=5, fill="both", expand=True)
+
+        self.btn_edit_mod_icons = ctk.CTkButton(mod_btn_frame, 
+                                                text="Edit Modded Icons", 
+                                                image = ImageTk.PhotoImage(Image.open("./icons/wrench.png").resize((20,20))),
+                                                state="disabled", 
+                                                command=self.modify_mod_icons,
+                                                fg_color=fgroundbutton,
+                                                hover_color=hoverbutton,
+                                                border_color="black",
+                                                border_width=2)
+        ToolTip(self.btn_edit_mod_icons, msg="View selected sheet's modded icon positions and replace icons on the modded sheet.", delay=0.5)
+        self.btn_import_mod_sheet = ctk.CTkButton(mod_btn_frame, 
+                                                  text="Upload Existing Mod Sheet",
+                                                  image = ImageTk.PhotoImage(Image.open("./icons/upload.png").resize((20,20))),
+                                                  state="disabled", 
+                                                  command=self.import_modded_sheet,
+                                           fg_color=fgroundbutton,
+                                           hover_color=hoverbutton,
+                                           border_color="black",
+                                           border_width=2)
+        ToolTip(self.btn_import_mod_sheet, msg="Upload a modded sheet that has been created previously to the selected mod. The uploadedsheet should match the currently selected sheet's icon positions.", delay=0.5)
+        self.btn_delete_mod_sheet = ctk.CTkButton(mod_btn_frame, 
+                                                text="Delete Modded Sheet", 
+                                                image = ImageTk.PhotoImage(Image.open("./icons/delete.png").resize((20,20))),
+                                                state="disabled", 
+                                                command=self.delete_modded_sheet,
+                                                fg_color=fgroundbutton,
+                                                hover_color=hoverbutton,
+                                                border_color="black",
+                                                border_width=2)
+        ToolTip(self.btn_delete_mod_sheet, msg="Delete the currently selected mod sheet.", delay=0.5)
         
-        for btn in self.btn_mod_list:
-            btn.pack(side="left", padx=5)
+        self.btn_mod_sheet_list = [self.btn_import_mod_sheet, self.btn_delete_mod_sheet,self.btn_edit_mod_icons]
+        self.btn_mod_only_list = []
+
+        for i,btn in enumerate(self.btn_sheet_list):
+            btn.grid(row=i, column=0, padx=5, pady=5, sticky="ew")
+        
+        for i,btn in enumerate(self.btn_mod_sheet_list):
+            btn.grid(row=i//2, column=i%2, padx=5, pady=5, sticky="ew")
 
     # ------------------------------- MAIN CONTENT -------------------------------
     def create_content(self):
-        main = ttk.Frame(self, padding=10)
+        main = ctk.CTkFrame(self)
         main.pack(fill="both", expand=True)
 
+        listboxes = ctk.CTkFrame(main)
+        listboxes.pack(fill="both", expand=False, side="left")
+        xpad = 5
+        ypad = 1
+
         # Allow full-window resize
-        main.columnconfigure(0, weight=1)
-        main.columnconfigure(1, weight=1)
-        main.columnconfigure(2, weight=1)
-        main.rowconfigure(1, weight=1)
+        listboxes.columnconfigure(0, weight=0)
+        listboxes.columnconfigure(1, weight=0)
+        listboxes.rowconfigure(1, weight=1)
+        listboxes.rowconfigure(2, weight=0)
+        listboxes.rowconfigure(3, weight=0)
+        listboxes.rowconfigure(4, weight=0)
+        listboxes.rowconfigure(5, weight=0)
 
         # Left title
-        ttk.Label(main, text="Original Sheet:", font=("Segoe UI", 12, "bold"))\
-            .grid(row=0, column=0, sticky="w", padx=(0,10))
+        ctk.CTkLabel(listboxes, text="Original Sheet", font=("Segoe UI", 12, "bold"))\
+            .grid(row=0, column=0, sticky="nsew")
 
         # Right title
-        ttk.Label(main, text="Mods", font=("Segoe UI", 12, "bold"))\
-            .grid(row=0, column=1, sticky="w")
+        ctk.CTkLabel(listboxes, text="Mods", font=("Segoe UI", 12, "bold"))\
+            .grid(row=0, column=1, sticky="nsew")
 
         # Left listbox
-        self.sheet_listbox = tk.Listbox(main, exportselection=False)
-        self.sheet_listbox.grid(row=1, column=0, sticky="nsew", padx=(0,10))
+        self.sheet_listbox = CTkListbox(listboxes)
+        self.sheet_listbox.grid(row=1, column=0, sticky="nsew", padx=xpad, pady=ypad)
 
         # Right listbox
-        self.moded_sheet_listbox = tk.Listbox(main, exportselection=False)
-        self.moded_sheet_listbox.grid(row=1, column=1, sticky="nsew")
+        self.moded_sheet_listbox = CTkListbox(listboxes)
+        self.moded_sheet_listbox.grid(row=1, column=1, sticky="nsew", padx=xpad, pady=ypad)
 
         # Left buttons
-        self.import_sheet_button = ttk.Button(main, text="New Sheet", command=self.import_new_sheet)
-        self.import_sheet_button.grid(row=2, column=0, sticky="ew", pady=(10,0))
+        self.new_sheet_button = ctk.CTkButton(listboxes, 
+                                                 text="New Sheet", 
+                                                 image = ImageTk.PhotoImage(Image.open("./icons/new.png").resize((20,20))),
+                                                 command=self.import_new_sheet,
+                                           fg_color=fgroundbutton,
+                                           hover_color=hoverbutton,
+                                           border_color="black",
+                                           border_width=2)
+        ToolTip(self.new_sheet_button, msg="Import a new orignal sheet.", delay=0.5)
+        self.new_sheet_button.grid(row=2, column=0, sticky="ew", padx=xpad, pady=ypad)
+        self.delete_sheet_button = ctk.CTkButton(listboxes, 
+                                            text="Delete Sheet", 
+                                            image = ImageTk.PhotoImage(Image.open("./icons/delete.png").resize((20,20))),
+                                            state="disabled",
+                                            command=self.delete_sheet,
+                                            fg_color=fgroundbutton,
+                                            hover_color=hoverbutton,
+                                            border_color="black",
+                                            border_width=2)
+        ToolTip(self.delete_sheet_button, msg="Delete the currently selected orignal sheet.", delay=0.5)
+        self.btn_sheet_list.append(self.delete_sheet_button)
+        self.delete_sheet_button.grid(row=3, column=0, sticky="ew", padx=xpad, pady=ypad)
 
-        self.delete_sheet_button = ttk.Button(main, text="Delete Sheet", command=self.delete_sheet)
-        self.delete_sheet_button.grid(row=3, column=0, sticky="ew", pady=(10,0))
+        self.btn_export_sheet = ctk.CTkButton(listboxes, text="Export Sheet", state="disabled", command=lambda: self.export_sheet(export_icons=False),
+                                           fg_color=fgroundbutton,
+                                           hover_color=hoverbutton,
+                                           border_color="black",
+                                           border_width=2)
+        ToolTip(self.btn_export_sheet, msg="Export the currently selected orignal sheet.", delay=0.5)
+        self.btn_export_sheet.grid(row=4, column=0, sticky="ew", padx=xpad, pady=ypad)
+        self.btn_sheet_list.append(self.btn_export_sheet)
+        self.btn_export_icons = ctk.CTkButton(listboxes, text="Export Icons", state="disabled", command=lambda: self.export_sheet(export_icons=True),
+                                           fg_color=fgroundbutton,
+                                           hover_color=hoverbutton,
+                                           border_color="black",
+                                           border_width=2)
+        ToolTip(self.btn_export_icons, msg="Export the each identified icon of the currently selected orignal sheet.", delay=0.5)
 
+        self.btn_export_icons.grid(row=5, column=0, sticky="ew", padx=xpad, pady=ypad)
+        self.btn_sheet_list.append(self.btn_export_icons)
         #Right button
-        self.moded_sheets_button = ttk.Button(main, text="New Mod", command=self.create_new_mod_folder)
-        self.moded_sheets_button.grid(row=2, column=1, sticky="ew", pady=(10,0))
+        self.new_moded_sheets_button = ctk.CTkButton(listboxes, 
+                                                 text="New Mod", 
+                                                 image = ImageTk.PhotoImage(Image.open("./icons/plus.png").resize((20,20))),
+                                                 command=self.create_new_mod_folder,
+                                           fg_color=fgroundbutton,
+                                           hover_color=hoverbutton,
+                                           border_color="black",
+                                           border_width=2)
+        ToolTip(self.new_moded_sheets_button, msg="Create and name a new mod to be managed.", delay=0.5)
+        self.new_moded_sheets_button.grid(row=2, column=1, sticky="ew", padx=xpad, pady=ypad)
 
-        self.moded_sheets_del_button = ttk.Button(main, text="Delete Mod", command=self.delete_mod_folder)
-        self.moded_sheets_del_button.grid(row=3, column=1, sticky="ew", pady=(10,0))
-
+        self.moded_sheets_del_button = ctk.CTkButton(listboxes, 
+                                                    text="Delete Mod", 
+                                                    image = ImageTk.PhotoImage(Image.open("./icons/delete.png").resize((20,20))),
+                                                    command=self.delete_mod_folder,
+                                                    state="disabled",
+                                                    fg_color=fgroundbutton,
+                                                    hover_color=hoverbutton,
+                                                    border_color="black",
+                                                    border_width=2)
+        ToolTip(self.moded_sheets_del_button, msg="Delete the currently selected mod and all sheets.", delay=0.5)
+        self.moded_sheets_del_button.grid(row=3, column=1, sticky="ew", padx=xpad, pady=ypad)
+        self.btn_mod_only_list.append(self.moded_sheets_del_button)
+        self.btn_export_mod_sheet = ctk.CTkButton(listboxes, text="Export Mod Sheets", state="disabled", command=lambda: self.export_modded_sheet(export_icons=False),
+                                           fg_color=fgroundbutton,
+                                           hover_color=hoverbutton,
+                                           border_color="black",
+                                           border_width=2)
+        ToolTip(self.btn_export_mod_sheet, msg="Export all sheets in the currently selected mod.", delay=0.5)
+        self.btn_export_mod_sheet.grid(row=4, column=1, sticky="ew", padx=xpad, pady=ypad)
+        self.btn_mod_only_list.append(self.btn_export_mod_sheet)
+        self.btn_export_mod_icons = ctk.CTkButton(listboxes, text="Export Mod Icons", state="disabled", command=lambda: self.export_modded_sheet(export_icons=True),
+                                           fg_color=fgroundbutton,
+                                           hover_color=hoverbutton,
+                                           border_color="black",
+                                           border_width=2)
+        ToolTip(self.btn_export_mod_icons, msg="Export all icons of all sheets in the currently selected mod.", delay=0.5)
+        self.btn_export_mod_icons.grid(row=5, column=1, sticky="ew", padx=xpad, pady=ypad)
+        self.btn_mod_only_list.append(self.btn_export_mod_icons)
         # Preview window
-        self.preview_window = ttk.Frame(main, borderwidth=2, relief="sunken")
-        self.preview_window.grid(row=0, column=2, rowspan=2, sticky="nsew", padx=(10,0))
 
-        self.preview_canvas = tk.Canvas(self.preview_window, width=400, height=400)
+        self.preview_canvas = ctk.CTkCanvas(main, width=400, height=400, 
+                                            borderwidth=0,
+                                            highlightthickness=0,
+                                            bg=main.cget("bg_color")[0 if ctk.get_appearance_mode() == "Light" else 1])
         self.preview_canvas.pack(fill="both", expand=True)
 
     # ------------------------------- BINDINGS -------------------------------
@@ -140,7 +280,7 @@ class SheetManagerGUI(tk.Tk):
             if self._resize_after_id:
                 self.after_cancel(self._resize_after_id)
             # Run once resizing stops
-            self._resize_after_id = self.after(50, self.load_image_preview)
+            self._resize_after_id = self.after(50, self.load_mod_preview if self.selected_sheet and self.selected_mod else self.load_image_preview)
 
         
     # ------------------------------- LOAD SHEET FOLDERS -------------------------------
@@ -152,8 +292,9 @@ class SheetManagerGUI(tk.Tk):
         for folder in folders:
             self.sheet_listbox.insert(tk.END, folder)
 
-    def load_mod_sheet_list(self):
-        self.moded_sheet_listbox.delete(0, tk.END)
+    def load_mod_sheet_list(self,reset=False):
+        if reset:
+            self.moded_sheet_listbox.delete(0, tk.END)
 
         modded_path = self.mod_path
         if not modded_path.exists():
@@ -161,24 +302,24 @@ class SheetManagerGUI(tk.Tk):
 
         mod_folders = [f.name for f in modded_path.iterdir() if f.is_dir()]
 
-        for mod_folder in mod_folders:
-            self.moded_sheet_listbox.insert(tk.END, mod_folder)
+        for i,mod_folder in enumerate(mod_folders):
+            if reset:
+                self.moded_sheet_listbox.insert(tk.END, mod_folder)
             has_sheet = (
                 self.selected_sheet
                 and (modded_path / mod_folder / self.selected_sheet).exists()
             )
-
-            self.moded_sheet_listbox.itemconfig(
-                tk.END,
-                bg="green" if has_sheet else "grey"
-            )
+            btn_key = list(self.moded_sheet_listbox.buttons.keys())[i]
+            
+            self.moded_sheet_listbox.buttons[btn_key].configure(bg_color=("SpringGreen3", "dark green") if has_sheet else ("grey", "dim grey"))
+            self.moded_sheet_listbox.buttons[btn_key].configure(hover_color=("SpringGreen2", "SpringGreen4") if has_sheet else ("dim grey", "grey"))
 
     # ------------------------------- EVENTS -------------------------------
     def on_sheet_select(self, event):
-        if not self.sheet_listbox.curselection():
+        if self.sheet_listbox.curselection() is None:
             self.selected_sheet = None
         else:
-            index = self.sheet_listbox.curselection()[0]
+            index = self.sheet_listbox.curselection()
             folder_name = self.sheet_listbox.get(index)
             if folder_name == self.selected_sheet:
                 self.selected_sheet = None
@@ -186,46 +327,59 @@ class SheetManagerGUI(tk.Tk):
                 self.selected_sheet = folder_name
 
         # Enable buttons
-        if self.selected_sheet:
+        if self.selected_sheet is not None:
             for btn in self.btn_sheet_list:
-                btn.config(state="normal")
+                btn.configure(state="normal")
         else:
             for btn in self.btn_sheet_list:
-                    btn.config(state="disabled")
+                    btn.configure(state="disabled")
             self.selected_sheet = None
-            self.sheet_listbox.selection_clear(0, tk.END)
+            if self.sheet_listbox.curselection() is not None:
+                self.sheet_listbox.deactivate("all")
         self.load_image_preview()
         self.load_mod_sheet_list() #set colors
         self.on_mod_select(None)
     
     def on_mod_select(self, event):
-        if not self.moded_sheet_listbox.curselection():
+        if self.moded_sheet_listbox.curselection() is None:
             self.selected_mod = None
         else:
-            index = self.moded_sheet_listbox.curselection()[0]
+            index = self.moded_sheet_listbox.curselection()
             folder_name = self.moded_sheet_listbox.get(index)
             if folder_name == self.selected_mod:
                 self.selected_mod = None
             else:
                 self.selected_mod = folder_name
 
-        if self.selected_mod:
+        if self.selected_mod is not None:
             if self.selected_sheet:
-                for btn in self.btn_mod_list:
-                    btn.config(state="normal")
+                for btn in self.btn_mod_only_list:
+                    btn.configure(state="normal")
+                for btn in self.btn_mod_sheet_list:
+                    btn.configure(state="normal")
             else:
                 for btn in self.btn_mod_only_list:
-                    btn.config(state="normal")
+                    btn.configure(state="normal")
                 for btn in self.btn_mod_sheet_list:
-                    btn.config(state="disabled")
+                    btn.configure(state="disabled")
         else:
-            for btn in self.btn_mod_list:
-                btn.config(state="disabled")
-            self.moded_sheet_listbox.selection_clear(0, tk.END)
+            for btn in self.btn_mod_only_list:
+                btn.configure(state="disabled")
+            for btn in self.btn_mod_sheet_list:
+                btn.configure(state="disabled")
+            if self.moded_sheet_listbox.curselection() is not None:
+                self.moded_sheet_listbox.deactivate("all")
         # Enable buttons
         if self.selected_sheet and self.selected_mod:
             self.load_mod_preview()
+    def find_scale(self, canvas, image):
 
+        orig_width, orig_height = image.size
+        scale = min(canvas.winfo_width() / orig_width, canvas.winfo_height() / orig_height)
+        new_width = int(orig_width * scale)
+        new_height = int(orig_height * scale)
+
+        return new_width, new_height
     def load_image_preview(self):
         if not self.selected_sheet:
             self.preview_canvas.delete("all")
@@ -233,7 +387,8 @@ class SheetManagerGUI(tk.Tk):
         selected_sheet_path = self.sheet_path / self.selected_sheet / "original" / f"{self.selected_sheet}.png"
         if selected_sheet_path.exists():
             self.preview_image = Image.open(selected_sheet_path)
-            self.preview_image = self.preview_image.resize((self.preview_canvas.winfo_width(), self.preview_canvas.winfo_height()), Image.NEAREST)
+            new_width, new_height = self.find_scale(self.preview_canvas, self.preview_image)
+            self.preview_image = self.preview_image.resize((new_width, new_height), Image.NEAREST)
             self.preview_image = ImageTk.PhotoImage(self.preview_image)
             self.preview_canvas.create_image(0, 0, image=self.preview_image, anchor="nw")
             self.preview_canvas.config(scrollregion=self.preview_canvas.bbox("all"))
@@ -242,7 +397,8 @@ class SheetManagerGUI(tk.Tk):
         selected_mod_sheet_path = self.mod_path / self.selected_mod / self.selected_sheet/ "current" / f"{self.selected_sheet}.png"
         if selected_mod_sheet_path.exists():
             self.preview_image = Image.open(selected_mod_sheet_path)
-            self.preview_image = self.preview_image.resize((self.preview_canvas.winfo_width(), self.preview_canvas.winfo_height()), Image.NEAREST)
+            new_width, new_height = self.find_scale(self.preview_canvas, self.preview_image)
+            self.preview_image = self.preview_image.resize((new_width, new_height), Image.NEAREST)
             self.preview_image = ImageTk.PhotoImage(self.preview_image)
             self.preview_canvas.create_image(0, 0, image=self.preview_image, anchor="nw")
             self.preview_canvas.config(scrollregion=self.preview_canvas.bbox("all"))
@@ -289,24 +445,26 @@ class SheetManagerGUI(tk.Tk):
     
     def create_new_mod_folder(self):
         mod_name = simpledialog.askstring("Input", "Enter Mod Name", parent=self)
+        if not mod_name:
+            return
         modded_path = self.mod_path / mod_name
         if not modded_path.exists():
             modded_path.mkdir(parents=True, exist_ok=True)
         else:
             messagebox.showerror("Error", "Mod already exists.")
             return None
-        self.load_mod_sheet_list()
+        self.load_mod_sheet_list(reset=True)
     
     def delete_mod_folder(self):
         if not self.selected_mod:
             return
         modded_path = self.mod_path / self.selected_mod
         if len(os.listdir(modded_path)) != 0:
-            messagebox.showerror("Error", "Please Delete All Modded Sheets Before Deleting Mod.")
-            return
+            if not messagebox.askokcancel("Delete", "Modded Sheets Exist for this mod.\n Are you sure you want to delete?"):
+                return
         shutil.rmtree(modded_path)
         self.selected_mod = None
-        self.load_mod_sheet_list()
+        self.load_mod_sheet_list(reset=True)
 
     def import_modded_sheet(self):
         if not self.selected_mod or not self.selected_sheet:
@@ -389,7 +547,6 @@ class SheetManagerGUI(tk.Tk):
         oldjson = f"{oldpath}\\{self.selected_sheet}.json"
         newjson = f"{newpath}\\{self.selected_sheet}.json"
         IconF.main([oldsheet,newsheet,oldjson,newjson,self.mod_path])
-        # self.launch_python_program(".\\IconFinder.py",oldsheet,newsheet,oldjson,newjson,self.mod_path)
         if self.selected_sheet in self.sheet_listbox.get(0, tk.END):
             index = self.sheet_listbox.get(0, tk.END).index(self.selected_sheet)
             self.sheet_listbox.selection_set(index)
@@ -397,9 +554,21 @@ class SheetManagerGUI(tk.Tk):
 
 
     def modify_icon_positions(self):
-        self.launch_python_program(".\\SpriteFinder\\add_new_icons.py",f"{Path(self.sheet_path)}\\{self.selected_sheet}",self.selected_sheet)
+        image_path = self.sheet_path / self.selected_sheet / "original" / f"{self.selected_sheet}.png"
+        save_path = self.sheet_path / self.selected_sheet / "original"
+        AddIcon.main([image_path,save_path,self.selected_sheet])
+        #self.launch_python_program(".\\SpriteFinder\\add_new_icons.py",f"{Path(self.sheet_path)}\\{self.selected_sheet}",self.selected_sheet)
         #self.launch_exe_program(".\\deps\\add_new_icons.exe",f"{Path(self.sheet_path)}\\{self.selected_sheet}",self.selected_sheet)
 
+    def modify_mod_icons(self):
+        image_path = self.sheet_path / self.selected_sheet / "original" / f"{self.selected_sheet}.png"
+        save_path = self.sheet_path / self.selected_sheet / "original"
+        mod_image_path = self.mod_path / self.selected_mod / self.selected_sheet / "current" / f"{self.selected_sheet}.png"
+        if not mod_image_path.exists():
+            mod_image_path.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copy(image_path, mod_image_path)
+            self.load_mod_sheet_list()
+        AddIcon.viewMode([image_path,save_path,self.selected_sheet,mod_image_path])
     def launch_python_program(self, script_name, *args):
         """Launches another Python script."""
         if not self.selected_sheet:
@@ -425,4 +594,5 @@ class SheetManagerGUI(tk.Tk):
 # ------------------------------- RUN APP -------------------------------
 if __name__ == "__main__":
     app = SheetManagerGUI()
+    app.iconbitmap("./icons/UIManagerLogo.ico")
     app.mainloop()

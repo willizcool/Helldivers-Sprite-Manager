@@ -51,11 +51,11 @@
             "ExpandedBBOX": [1578, 4, 1842, 268]
         },
         {
-            "Order": 0,
-            "SaveID": 0,
+            "Order": 42,
+            "SaveID": 94,
             "ID": "1705ff9f7e9816b0b52920bb826367d9",
-            "DESCRIPTION": "",
-            "Group": "None",
+            "DESCRIPTION": "C4 Pack",
+            "Group": "supply",
             "SearchBBOX": [901, 623, 1096, 804],
             "ExpandedBBOX": [867, 582, 1131, 846]
         },

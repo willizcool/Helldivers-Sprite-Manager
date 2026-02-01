@@ -189,7 +189,7 @@
             "Order": 0,
             "SaveID": 0,
             "ID": "2ecb780fb485319490b38b8cfd6f3674",
-            "DESCRIPTION": "Rocket",
+            "DESCRIPTION": "",
             "Group": "DEFAULT",
             "SearchBBOX": [931, 47, 1084, 240],
             "ExpandedBBOX": [931, 47, 1084, 240]
@@ -261,7 +261,7 @@
             "Order": 0,
             "SaveID": 0,
             "ID": "f77e22f927e7c7908c74f89d1d753a46",
-            "DESCRIPTION": "skull",
+            "DESCRIPTION": "",
             "Group": "DEFAULT",
             "SearchBBOX": [336, 623, 456, 744],
             "ExpandedBBOX": [336, 623, 456, 744]
@@ -1119,7 +1119,7 @@
             "DESCRIPTION": "",
             "Group": "DEFAULT",
             "SearchBBOX": [88, 1826, 134, 1882],
-            "ExpandedBBOX": [80.77777777777774, 1823.4814814814815, 144.77777777777783, 1887.4814814814815]
+            "ExpandedBBOX": [80, 1823, 144, 1887]
         },
         {
             "Order": 0,
@@ -1128,7 +1128,7 @@
             "DESCRIPTION": "",
             "Group": "DEFAULT",
             "SearchBBOX": [156, 1833, 192, 1879],
-            "ExpandedBBOX": [144.37037037037044, 1823.4074074074074, 208.37037037037044, 1887.4074074074074]
+            "ExpandedBBOX": [144, 1823, 208, 1887]
         },
         {
             "Order": 0,
@@ -1137,7 +1137,7 @@
             "DESCRIPTION": "",
             "Group": "DEFAULT",
             "SearchBBOX": [221, 1835, 259, 1870],
-            "ExpandedBBOX": [208.2962962962963, 1823.3703703703704, 272.2962962962963, 1887.3703703703704]
+            "ExpandedBBOX": [208, 1823, 272, 1887]
         },
         {
             "Order": 0,
@@ -1146,7 +1146,7 @@
             "DESCRIPTION": "",
             "Group": "DEFAULT",
             "SearchBBOX": [290, 1839, 324, 1869],
-            "ExpandedBBOX": [272.33333333333326, 1823.4814814814815, 336.33333333333326, 1887.4814814814815]
+            "ExpandedBBOX": [272, 1823, 336, 1887]
         },
         {
             "Order": 0,
@@ -1344,7 +1344,7 @@
             "DESCRIPTION": "",
             "Group": "DEFAULT",
             "SearchBBOX": [1267, 1850, 1303, 1879],
-            "ExpandedBBOX": [1251.2222222222222, 1832.4074074074074, 1315.2222222222222, 1896.4074074074074]
+            "ExpandedBBOX": [1251, 1832, 1315, 1896]
         },
         {
             "Order": 0,
@@ -1353,7 +1353,7 @@
             "DESCRIPTION": "",
             "Group": "DEFAULT",
             "SearchBBOX": [1201, 1852, 1235, 1878],
-            "ExpandedBBOX": [1185.7037037037037, 1832.4074074074074, 1249.7037037037037, 1896.4074074074074]
+            "ExpandedBBOX": [1185, 1832, 1249, 1896]
         },
         {
             "Order": 0,
@@ -1494,37 +1494,10 @@
             "Order": 0,
             "SaveID": 0,
             "ID": "1b8355ee8e316c8423ccaf484e028fef",
-            "DESCRIPTION": "Circle",
+            "DESCRIPTION": "",
             "Group": "DEFAULT",
             "SearchBBOX": [15, 15, 272, 272],
             "ExpandedBBOX": [15, 15, 272, 272]
-        },
-        {
-            "Order": 0,
-            "SaveID": 0,
-            "ID": "1b8355ee8e316c8423ccaf484e028fef",
-            "DESCRIPTION": "Circle",
-            "Group": "DEFAULT",
-            "SearchBBOX": [15, 15, 272, 272],
-            "ExpandedBBOX": [15, 15, 272, 272]
-        },
-        {
-            "Order": 0,
-            "SaveID": 0,
-            "ID": "2ecb780fb485319490b38b8cfd6f3674",
-            "DESCRIPTION": "Rocket",
-            "Group": "DEFAULT",
-            "SearchBBOX": [931, 47, 1084, 240],
-            "ExpandedBBOX": [931, 47, 1084, 240]
-        },
-        {
-            "Order": 0,
-            "SaveID": 0,
-            "ID": "f77e22f927e7c7908c74f89d1d753a46",
-            "DESCRIPTION": "skull",
-            "Group": "DEFAULT",
-            "SearchBBOX": [336, 623, 456, 744],
-            "ExpandedBBOX": [336, 623, 456, 744]
         }
     ]
 }

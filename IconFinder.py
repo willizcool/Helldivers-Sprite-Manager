@@ -269,7 +269,7 @@ class SpriteLocatorApp:
 def main(args):
     root = tk.Tk()
     app = SpriteLocatorApp(root, *args)
-    if not args:
+    if args is None:
         root.mainloop()
     else:
         root.destroy()
