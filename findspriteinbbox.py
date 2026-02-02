@@ -5,7 +5,6 @@ import tkinter as tk
 from tkinter import simpledialog, filedialog
 import time
 import enum
-from tkinterdnd2 import DND_FILES
 
 class modeenum(enum.Enum):
     """enum for different modes of spriteBox"""

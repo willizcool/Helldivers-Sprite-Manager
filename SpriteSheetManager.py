@@ -7,21 +7,24 @@ import subprocess, shutil
 from pathlib import Path
 import IconFinder as IconF
 import add_new_icons as AddIcon
-from tkinterdnd2 import TkinterDnD
+from add_new_icons import packed_resource
+import tkinterdnd2 as Tkdnd
 import customtkinter as ctk
 from CTkListbox import *
 from tktooltip import ToolTip
+import platform
 
 version = "0.1.0"
 
 fgroundbutton = ("RoyalBlue2", "RoyalBlue4")
 hoverbutton = ("RoyalBlue3", "RoyalBlue3")
 
-class SheetManagerGUI(ctk.CTk, TkinterDnD.DnDWrapper):
+class SheetManagerGUI(ctk.CTk, Tkdnd.TkinterDnD.DnDWrapper):
+        
     def __init__(self):
         super().__init__()
-        self.TkdndVersion = TkinterDnD._require(self)
-
+        print("Platform:",platform.system(), platform.machine(), platform.version())
+        self.TkdndVersion = Tkdnd.TkinterDnD._require(self)
         
         ctk.set_appearance_mode("dark")
         ctk.set_default_color_theme("dark-blue")
@@ -75,7 +78,7 @@ class SheetManagerGUI(ctk.CTk, TkinterDnD.DnDWrapper):
 
         self.btn_select_update = ctk.CTkButton(btn_frame, 
                                                text="Update Sheet and Mods",
-                                               image = ImageTk.PhotoImage(Image.open("./icons/update.png").resize((20,20))),
+                                               image = ImageTk.PhotoImage(Image.open(packed_resource("./icons/update.png")).resize((20,20))),
                                                state="disabled", 
                                                command=self.update_sheet,
                                                fg_color=("purple1","purple4"),
@@ -85,7 +88,7 @@ class SheetManagerGUI(ctk.CTk, TkinterDnD.DnDWrapper):
         ToolTip(self.btn_select_update, msg="Updates the selected sheet to a new image. Finds new icon positions on the new sheet and updates all currently managed mods to match.", delay=0.5)
         self.btn_add_icons = ctk.CTkButton(btn_frame, 
                                            text="Update Icon Positions",
-                                           image = ImageTk.PhotoImage(Image.open("./icons/wrench.png").resize((20,20))),
+                                           image = ImageTk.PhotoImage(Image.open(packed_resource("./icons/wrench.png")).resize((20,20))),
                                            state="disabled", 
                                            command=self.modify_icon_positions,
                                            fg_color=fgroundbutton,
@@ -106,7 +109,7 @@ class SheetManagerGUI(ctk.CTk, TkinterDnD.DnDWrapper):
 
         self.btn_edit_mod_icons = ctk.CTkButton(mod_btn_frame, 
                                                 text="Edit Modded Icons", 
-                                                image = ImageTk.PhotoImage(Image.open("./icons/wrench.png").resize((20,20))),
+                                                image = ImageTk.PhotoImage(Image.open(packed_resource("./icons/wrench.png")).resize((20,20))),
                                                 state="disabled", 
                                                 command=self.modify_mod_icons,
                                                 fg_color=fgroundbutton,
@@ -116,7 +119,7 @@ class SheetManagerGUI(ctk.CTk, TkinterDnD.DnDWrapper):
         ToolTip(self.btn_edit_mod_icons, msg="View selected sheet's modded icon positions and replace icons on the modded sheet.", delay=0.5)
         self.btn_import_mod_sheet = ctk.CTkButton(mod_btn_frame, 
                                                   text="Upload Existing Mod Sheet",
-                                                  image = ImageTk.PhotoImage(Image.open("./icons/upload.png").resize((20,20))),
+                                                  image = ImageTk.PhotoImage(Image.open(packed_resource("./icons/upload.png")).resize((20,20))),
                                                   state="disabled", 
                                                   command=self.import_modded_sheet,
                                            fg_color=fgroundbutton,
@@ -126,7 +129,7 @@ class SheetManagerGUI(ctk.CTk, TkinterDnD.DnDWrapper):
         ToolTip(self.btn_import_mod_sheet, msg="Upload a modded sheet that has been created previously to the selected mod. The uploadedsheet should match the currently selected sheet's icon positions.", delay=0.5)
         self.btn_delete_mod_sheet = ctk.CTkButton(mod_btn_frame, 
                                                 text="Delete Modded Sheet", 
-                                                image = ImageTk.PhotoImage(Image.open("./icons/delete.png").resize((20,20))),
+                                                image = ImageTk.PhotoImage(Image.open(packed_resource("./icons/delete.png")).resize((20,20))),
                                                 state="disabled", 
                                                 command=self.delete_modded_sheet,
                                                 fg_color=fgroundbutton,
@@ -182,7 +185,7 @@ class SheetManagerGUI(ctk.CTk, TkinterDnD.DnDWrapper):
         # Left buttons
         self.new_sheet_button = ctk.CTkButton(listboxes, 
                                                  text="New Sheet", 
-                                                 image = ImageTk.PhotoImage(Image.open("./icons/new.png").resize((20,20))),
+                                                 image = ImageTk.PhotoImage(Image.open(packed_resource("./icons/new.png")).resize((20,20))),
                                                  command=self.import_new_sheet,
                                            fg_color=fgroundbutton,
                                            hover_color=hoverbutton,
@@ -192,7 +195,7 @@ class SheetManagerGUI(ctk.CTk, TkinterDnD.DnDWrapper):
         self.new_sheet_button.grid(row=2, column=0, sticky="ew", padx=xpad, pady=ypad)
         self.delete_sheet_button = ctk.CTkButton(listboxes, 
                                             text="Delete Sheet", 
-                                            image = ImageTk.PhotoImage(Image.open("./icons/delete.png").resize((20,20))),
+                                            image = ImageTk.PhotoImage(Image.open(packed_resource("./icons/delete.png")).resize((20,20))),
                                             state="disabled",
                                             command=self.delete_sheet,
                                             fg_color=fgroundbutton,
@@ -223,7 +226,7 @@ class SheetManagerGUI(ctk.CTk, TkinterDnD.DnDWrapper):
         #Right button
         self.new_moded_sheets_button = ctk.CTkButton(listboxes, 
                                                  text="New Mod", 
-                                                 image = ImageTk.PhotoImage(Image.open("./icons/plus.png").resize((20,20))),
+                                                 image = ImageTk.PhotoImage(Image.open(packed_resource("./icons/plus.png")).resize((20,20))),
                                                  command=self.create_new_mod_folder,
                                            fg_color=fgroundbutton,
                                            hover_color=hoverbutton,
@@ -234,7 +237,7 @@ class SheetManagerGUI(ctk.CTk, TkinterDnD.DnDWrapper):
 
         self.moded_sheets_del_button = ctk.CTkButton(listboxes, 
                                                     text="Delete Mod", 
-                                                    image = ImageTk.PhotoImage(Image.open("./icons/delete.png").resize((20,20))),
+                                                    image = ImageTk.PhotoImage(Image.open(packed_resource("./icons/delete.png")).resize((20,20))),
                                                     command=self.delete_mod_folder,
                                                     state="disabled",
                                                     fg_color=fgroundbutton,
@@ -274,6 +277,7 @@ class SheetManagerGUI(ctk.CTk, TkinterDnD.DnDWrapper):
         self.moded_sheet_listbox.bind("<<ListboxSelect>>", self.on_mod_select)
         self._resize_after_id = None
         self.bind("<Configure>", self.on_resize)
+        self.bind("<FocusIn>", self.on_focus)
     def on_resize(self, event):
             # Only respond to this widget's resize
             if event.widget is not self:
@@ -395,7 +399,13 @@ class SheetManagerGUI(ctk.CTk, TkinterDnD.DnDWrapper):
             self.preview_canvas.create_image(0, 0, image=self.preview_image, anchor="nw")
             self.preview_canvas.config(scrollregion=self.preview_canvas.bbox("all"))
 
+    def on_focus(self,_):
+        self.load_mod_preview()
+
     def load_mod_preview(self):
+        if not self.selected_sheet or not self.selected_mod:
+            self.load_image_preview()
+            return
         selected_mod_sheet_path = self.mod_path / self.selected_mod / self.selected_sheet/ "current" / f"{self.selected_sheet}.png"
         if selected_mod_sheet_path.exists():
             self.preview_image = Image.open(selected_mod_sheet_path)
@@ -562,7 +572,7 @@ class SheetManagerGUI(ctk.CTk, TkinterDnD.DnDWrapper):
     def modify_icon_positions(self):
         image_path = self.sheet_path / self.selected_sheet / "original" / f"{self.selected_sheet}.png"
         save_path = self.sheet_path / self.selected_sheet / "original"
-        AddIcon.viewMode(self,image_path,save_path,self.selected_sheet)
+        AddIcon.viewMode(image_path,save_path,self.selected_sheet)
 
     def modify_mod_icons(self):
         image_path = self.sheet_path / self.selected_sheet / "original" / f"{self.selected_sheet}.png"
@@ -572,7 +582,7 @@ class SheetManagerGUI(ctk.CTk, TkinterDnD.DnDWrapper):
             mod_image_path.parent.mkdir(parents=True, exist_ok=True)
             shutil.copy(image_path, mod_image_path)
             self.load_mod_sheet_list()
-        AddIcon.viewMode(self,image_path,save_path,self.selected_sheet,mod_image_path)
+        AddIcon.viewMode(image_path,save_path,self.selected_sheet,mod_image_path)
     def launch_python_program(self, script_name, *args):
         """Launches another Python script."""
         if not self.selected_sheet:
@@ -598,5 +608,5 @@ class SheetManagerGUI(ctk.CTk, TkinterDnD.DnDWrapper):
 # ------------------------------- RUN APP -------------------------------
 if __name__ == "__main__":
     app = SheetManagerGUI()
-    app.iconbitmap("./icons/UIManagerLogo.ico")
+    app.iconbitmap(packed_resource("./icons/UIManagerLogo.ico"))
     app.mainloop()

@@ -15,16 +15,10 @@ import customtkinter as ctk
 
 class ImageViewer:
 
-    def on_exit(self):
-        self.caller.load_mod_preview()
-        self.master.destroy()
     
-    def __init__(self,caller,master, image_path, savedata_path, sheetname, mod_image_path=None):
-        master.title("Tkinter Image Viewer with Zoom and Pan")
+    def __init__(self,master, image_path, savedata_path, sheetname, mod_image_path=None):
+        master.title("Sheet Editor")
         master.geometry("1280x720")
-        master.protocol("WM_DELETE_WINDOW", self.on_exit)
-        self.caller = caller
-        self.master = master
         self.editMode = True if mod_image_path is None else False
 
 
@@ -121,7 +115,7 @@ class ImageViewer:
                                     border_color="black",
                                     border_width=2,
                                     width=50,
-                                    image=ImageTk.PhotoImage(Image.open("./icons/save.png").resize((20,20))),
+                                    image=ImageTk.PhotoImage(Image.open(packed_resource("./icons/save.png")).resize((20,20))),
                                     command=self.save_locations)
         save_button.pack(side="left", padx=5, pady=5, expand=False, anchor="nw", fill="y")
 
@@ -131,7 +125,7 @@ class ImageViewer:
                                         border_color="black",
                                         border_width=2,
                                         width=50,
-                                       image=ImageTk.PhotoImage(Image.open("./icons/zoomin.png").resize((20,20))),
+                                       image=ImageTk.PhotoImage(Image.open(packed_resource("./icons/zoomin.png")).resize((20,20))),
                                        command=lambda: self.zoom(1.5))
         zoom_in_button.pack(side="left", padx=5, pady=5, expand=False, anchor="nw", fill="y")
 
@@ -141,7 +135,7 @@ class ImageViewer:
                                         border_color="black",
                                         border_width=2,
                                         width=50,
-                                        image=ImageTk.PhotoImage(Image.open("./icons/zoomout.png").resize((20,20))),
+                                        image=ImageTk.PhotoImage(Image.open(packed_resource("./icons/zoomout.png")).resize((20,20))),
                                         command=lambda: self.zoom(1/1.5))
         zoom_out_button.pack(side="left", padx=5, pady=5, expand=False, anchor="nw", fill="y")
 
@@ -151,7 +145,7 @@ class ImageViewer:
                                         border_color="black",
                                         border_width=2,
                                         width=50,
-                                        image=ImageTk.PhotoImage(Image.open("./icons/zoomfit.png").resize((20,20))),
+                                        image=ImageTk.PhotoImage(Image.open(packed_resource("./icons/zoomfit.png")).resize((20,20))),
                                         command=lambda: self.zoom(self.find_scale(self.canvas, self.image),abolute=True))
         zoom_fit_button.pack(side="left", padx=5, pady=5, expand=False, anchor="nw", fill="y")
 
@@ -259,14 +253,14 @@ class ImageViewer:
                 else:
                     f.write(line)  # Write other lines as-is
 
-        cropped_savepath = os.path.join(self.savedata_path, "cropped_icons")
-        if not os.path.exists(cropped_savepath):
-            os.makedirs(cropped_savepath)
+        # cropped_savepath = os.path.join(self.savedata_path, "cropped_icons")
+        # if not os.path.exists(cropped_savepath):
+        #     os.makedirs(cropped_savepath)
         
-        for each in self.bbox_list:
-            x1, y1, x2, y2 = each.expandedbbox
-            croppedimage = self.image.crop((x1, y1, x2, y2))
-            croppedimage.save(os.path.join(cropped_savepath, f"{each.id}.png"))
+        # for each in self.bbox_list:
+        #     x1, y1, x2, y2 = each.expandedbbox
+        #     croppedimage = self.image.crop((x1, y1, x2, y2))
+        #     croppedimage.save(os.path.join(cropped_savepath, f"{each.id}.png"))
 
     def save_image(self):
         if self.image is None:
@@ -786,9 +780,15 @@ class ImageViewer:
     def do_pan(self, event):
         # Move the canvas to new position relative to mark
         self.canvas.scan_dragto(event.x, event.y, gain=1)
+def packed_resource(name):
+    try:
+        basepath = sys._MEIPASS
+    except Exception:
+        basepath = os.path.abspath(".")
+    return os.path.join(basepath, name)
 
-def viewMode(caller, image_path, savedata_path, sheetname, mod_image_path = None):
+def viewMode(image_path, savedata_path, sheetname, mod_image_path = None):
     root = ctk.CTkToplevel()
-    app = ImageViewer(caller, root, image_path, savedata_path, sheetname, mod_image_path)
-    root.after(10, lambda: root.iconbitmap("./icons/UIManagerLogo.ico"))
+    app = ImageViewer(root, image_path, savedata_path, sheetname, mod_image_path)
+    root.after(10, lambda: root.iconbitmap(packed_resource("./icons/UIManagerLogo.ico")))
     # root.mainloop()
