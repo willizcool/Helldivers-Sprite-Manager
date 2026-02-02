@@ -12,6 +12,8 @@ import customtkinter as ctk
 from CTkListbox import *
 from tktooltip import ToolTip
 
+version = "0.1.0"
+
 fgroundbutton = ("RoyalBlue2", "RoyalBlue4")
 hoverbutton = ("RoyalBlue3", "RoyalBlue3")
 
@@ -25,7 +27,7 @@ class SheetManagerGUI(ctk.CTk, TkinterDnD.DnDWrapper):
         ctk.set_default_color_theme("dark-blue")
 
 
-        self.title("HD2 Sprite Sheet Manager")
+        self.title("HD2 Sprite Sheet Manager v" + version)
         self.geometry("1200x800")
 
         self.sheet_path = Path("./originals")
@@ -460,7 +462,7 @@ class SheetManagerGUI(ctk.CTk, TkinterDnD.DnDWrapper):
             return
         modded_path = self.mod_path / self.selected_mod
         if len(os.listdir(modded_path)) != 0:
-            if not messagebox.askokcancel("Delete", "Modded Sheets Exist for this mod.\n Are you sure you want to delete?"):
+            if not messagebox.askokcancel("Delete", "Modded Sheets Exist for this mod.\n Are you sure you want to delete all of them? This cannot be undone."):
                 return
         shutil.rmtree(modded_path)
         self.selected_mod = None
@@ -491,6 +493,8 @@ class SheetManagerGUI(ctk.CTk, TkinterDnD.DnDWrapper):
             return
         modded_path = self.mod_path / self.selected_mod / self.selected_sheet
         if not modded_path.exists():
+            return
+        if not messagebox.askokcancel("Delete", "Are you sure you want to delete this mod sheet? This cannot be undone."):
             return
         shutil.rmtree(modded_path)
         self.load_mod_sheet_list()
@@ -556,7 +560,7 @@ class SheetManagerGUI(ctk.CTk, TkinterDnD.DnDWrapper):
     def modify_icon_positions(self):
         image_path = self.sheet_path / self.selected_sheet / "original" / f"{self.selected_sheet}.png"
         save_path = self.sheet_path / self.selected_sheet / "original"
-        AddIcon.main([image_path,save_path,self.selected_sheet])
+        AddIcon.viewMode(image_path,save_path,self.selected_sheet)
         #self.launch_python_program(".\\SpriteFinder\\add_new_icons.py",f"{Path(self.sheet_path)}\\{self.selected_sheet}",self.selected_sheet)
         #self.launch_exe_program(".\\deps\\add_new_icons.exe",f"{Path(self.sheet_path)}\\{self.selected_sheet}",self.selected_sheet)
 
@@ -568,7 +572,7 @@ class SheetManagerGUI(ctk.CTk, TkinterDnD.DnDWrapper):
             mod_image_path.parent.mkdir(parents=True, exist_ok=True)
             shutil.copy(image_path, mod_image_path)
             self.load_mod_sheet_list()
-        AddIcon.viewMode([image_path,save_path,self.selected_sheet,mod_image_path])
+        AddIcon.viewMode(image_path,save_path,self.selected_sheet,mod_image_path)
     def launch_python_program(self, script_name, *args):
         """Launches another Python script."""
         if not self.selected_sheet:

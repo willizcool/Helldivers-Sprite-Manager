@@ -10,10 +10,18 @@ from tkinterdnd2 import DND_FILES
 class modeenum(enum.Enum):
     """enum for different modes of spriteBox"""
     MODE_FINDSPRITE = 0
-    MODE_MOVE = 1
-    MODE_DESCRIPTION = 2
-    MODE_MANUALSPRITE = 3
-    MODE_MODMODE = 4
+    MODE_MANUALSPRITE = 1
+    MODE_MOVE = 2
+    MODE_DESCRIPTION = 3
+    
+    def text(self):
+        return {
+            modeenum.MODE_FINDSPRITE: "Auto Find Icon",
+            modeenum.MODE_MANUALSPRITE: "Manually Find Icon",
+            modeenum.MODE_MOVE: "Move Icon Bounds",
+            modeenum.MODE_DESCRIPTION: "Update Icon Name",
+        }[self]
+    
 class spriteBox:
     def __init__(self, bbox, expandedbbox, id, description=""):
         self.parent = None
@@ -95,7 +103,7 @@ class spriteBox:
                 return
             self.canvas.delete(self.imageid)
             self.parent.display_box(self,True)
-        elif self.mode.get() == modeenum.MODE_MODMODE.value:
+        elif not self.parent.editMode:
             image = filedialog.askopenfilename(title="Select a file", filetypes=(("Image files", "*.png;*.jpg;*.jpeg"), ("All files", "*.*")), parent=self.canvas)
             if image is None:
                 return

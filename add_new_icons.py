@@ -9,15 +9,16 @@ from findspriteinbbox import modeenum
 from collections import Counter
 from Queue import Queue
 from tkinterdnd2 import DND_FILES
+import customtkinter as ctk
 
 
 
 class ImageViewer:
     
-    def __init__(self,master, *args, editmode=True):
+    def __init__(self,master, image_path, savedata_path, sheetname, mod_image_path=None):
         master.title("Tkinter Image Viewer with Zoom and Pan")
-        master.geometry("800x600")
-        self.editMode = editmode
+        master.geometry("1280x720")
+        self.editMode = True if mod_image_path is None else False
 
         # Variables
         self.scale = 1.0
@@ -49,93 +50,124 @@ class ImageViewer:
         self.setup_ui(master)
 
         # If an argument was passed (folder or file), handle it
-        if len(args) >= 3 and args[0] and args[1] and args[2]:
-            self.image_path = args[0]
-            self.savedata_path = args[1]
-            self.sheetname = args[2]
-            if len(args) > 3 and os.path.isfile(args[3]):
-                self.mod_image_path = args[3]
-            if os.path.isfile(self.image_path):
-                try:
-                    if self.mod_image_path:
-                        self.open_image(self.mod_image_path)
-                    else:
-                        self.open_image(self.image_path)
-                    self.load_locations()
-                except Exception as e:
-                    print(f"Error processing file '{ self.image_path}': {e}")
-            
-            
         
+        self.image_path = image_path
+        self.savedata_path = savedata_path
+        self.sheetname = sheetname
+        if mod_image_path and os.path.isfile(mod_image_path):
+            self.mod_image_path = mod_image_path
+        if os.path.isfile(self.image_path):
+            try:
+                if self.mod_image_path is not None:
+                    self.open_image(self.mod_image_path)
+                else:
+                    self.open_image(self.image_path)
+                self.load_locations()
+            except Exception as e:
+                print(f"Error processing file '{ self.image_path}': {e}")
+        master.grab_set()
 
+            
+    def find_scale(self, canvas, image):
+
+        orig_width, orig_height = image.size
+        new_width, new_height = canvas.winfo_width() , canvas.winfo_height()
+        scale = min(canvas.winfo_width() / orig_width, canvas.winfo_height() / orig_height)
+        return scale
+
+    def select(self, value):
+        self.mode.set(value)  # default value
+        for v, btn in enumerate(self.modebuttons):
+            btn.configure(fg_color="dodgerblue" if v == value else "gray25")
 
     def setup_ui(self, master):
         # Create canvas inside a frame with scrollbars
         
+        bottom_frame = ctk.CTkFrame(master)
+        bottom_frame.pack(side="top", fill=tk.X)
         
-        self.frame = tk.Frame(master)
-        self.frame.pack(fill=tk.BOTH, expand=True, side=tk.RIGHT)
+        self.frame = ctk.CTkFrame(master)
+        self.frame.pack(fill=tk.BOTH, expand=True, side="top")
 
-        self.canvas = tk.Canvas(self.frame, bg="gray", cursor="arrow")
+        self.canvas = ctk.CTkCanvas(self.frame, bg="gray", cursor="arrow")
         self.canvas.grid(row=0, column=0, sticky="nsew")
 
         # Scrollbars
-        self.h_scrollbar = tk.Scrollbar(self.frame, orient=tk.HORIZONTAL, command=self.canvas.xview)
-        self.v_scrollbar = tk.Scrollbar(self.frame, orient=tk.VERTICAL, command=self.canvas.yview)
+        self.h_scrollbar = ctk.CTkScrollbar(self.frame, orientation="horizontal", command=self.canvas.xview)
+        self.v_scrollbar = ctk.CTkScrollbar(self.frame, orientation="vertical", command=self.canvas.yview)
         self.h_scrollbar.grid(row=1, column=0, sticky="we")
         self.v_scrollbar.grid(row=0, column=1, sticky="ns")
 
         self.frame.grid_rowconfigure(0, weight=1)
         self.frame.grid_columnconfigure(0, weight=1)
+        
 
         self.canvas.configure(xscrollcommand=self.h_scrollbar.set, yscrollcommand=self.v_scrollbar.set)
 
         # Buttons for zoom in/out at the bottom
-        bottom_frame = tk.Frame(master)
-        bottom_frame.pack(side=tk.LEFT, fill=tk.X)
+        
+
+        save_button = ctk.CTkButton(bottom_frame, 
+                                    text="Save",
+                                    compound="top",
+                                    border_color="black",
+                                    border_width=2,
+                                    width=50,
+                                    image=ImageTk.PhotoImage(Image.open("./icons/save.png").resize((20,20))),
+                                    command=self.save_locations if self.editMode else self.save_image)
+        save_button.pack(side="left", padx=5, pady=5, expand=False, anchor="nw", fill="y")
+
+        zoom_in_button = ctk.CTkButton(bottom_frame, 
+                                       text="Zoom\nin", 
+                                       compound="top",
+                                        border_color="black",
+                                        border_width=2,
+                                        width=50,
+                                       image=ImageTk.PhotoImage(Image.open("./icons/zoomin.png").resize((20,20))),
+                                       command=lambda: self.zoom(1.5))
+        zoom_in_button.pack(side="left", padx=5, pady=5, expand=False, anchor="nw", fill="y")
+
+        zoom_out_button = ctk.CTkButton(bottom_frame, 
+                                        text="Zoom\nout", 
+                                        compound="top",
+                                        border_color="black",
+                                        border_width=2,
+                                        width=50,
+                                        image=ImageTk.PhotoImage(Image.open("./icons/zoomout.png").resize((20,20))),
+                                        command=lambda: self.zoom(1/1.5))
+        zoom_out_button.pack(side="left", padx=5, pady=5, expand=False, anchor="nw", fill="y")
+
+        zoom_fit_button = ctk.CTkButton(bottom_frame, 
+                                        text="Zoom\nfit", 
+                                        compound="top",
+                                        border_color="black",
+                                        border_width=2,
+                                        width=50,
+                                        image=ImageTk.PhotoImage(Image.open("./icons/zoomfit.png").resize((20,20))),
+                                        command=lambda: self.zoom(self.find_scale(self.canvas, self.image),abolute=True))
+        zoom_fit_button.pack(side="left", padx=5, pady=5, expand=False, anchor="nw", fill="y")
+
 
         # open_button = tk.Button(bottom_frame, text="Open", command=self.open_image)
         # open_button.pack(side=tk.LEFT, padx=5, pady=5)
         
         self.mode = tk.IntVar()
-        if(self.editMode):
-            mode_frame = tk.Frame(bottom_frame, borderwidth=2, relief="groove")
-            mode_frame.pack(side=tk.TOP, padx=5, pady=5)
-
-            self.mode.set(modeenum.MODE_FINDSPRITE.value)  # default value
-            select_button = tk.Radiobutton(mode_frame, text="Auto Find Sprites", variable=self.mode, value=modeenum.MODE_FINDSPRITE.value)
-            select_button.pack(side=tk.TOP, anchor="w")
-
-            select_button = tk.Radiobutton(mode_frame, text="Manualy Select Sprites", variable=self.mode, value=modeenum.MODE_MANUALSPRITE.value)
-            select_button.pack(side=tk.TOP, anchor="w")
-
-            move_button = tk.Radiobutton(mode_frame, text="Move Bounds", variable=self.mode, value=modeenum.MODE_MOVE.value)
-            move_button.pack(side=tk.TOP, anchor="w")
-
-            move_button = tk.Radiobutton(mode_frame, text="Name Icons", variable=self.mode, value=modeenum.MODE_DESCRIPTION.value)
-            move_button.pack(side=tk.TOP, anchor="w")
-        else:
-            self.mode.set(modeenum.MODE_MODMODE.value)
-
-        
-        zoom_in_button = tk.Button(bottom_frame, text="Zoom In (+)", command=lambda: self.zoom(1.5))
-        zoom_in_button.pack(side=tk.TOP, padx=5, pady=5)
-
-        zoom_out_button = tk.Button(bottom_frame, text="Zoom Out (-)", command=lambda: self.zoom(1/1.5))
-        zoom_out_button.pack(side=tk.TOP, padx=5, pady=5)
-
-        save_button = tk.Button(bottom_frame, text="Save", command=self.save_locations if self.editMode else self.save_image)
-        save_button.pack(side=tk.TOP, padx=5, pady=5)
+        self.modebuttons = []
         self.min_bbox_width = tk.StringVar(value="32")
         self.min_bbox_height = tk.StringVar(value="32")
-        if (self.editMode):
-            tk.Label(bottom_frame, text="Min Size:").pack(side=tk.TOP, padx=5, pady=5)
 
-            bbox_dim_frame = tk.Frame(bottom_frame)
+        if(self.editMode):
+            mode_frame = ctk.CTkFrame(bottom_frame, fg_color="transparent")
+            mode_frame.grid_columnconfigure(0, weight=1)
+            mode_frame.grid_columnconfigure(1, weight=1)
+            mode_frame.grid_columnconfigure(2, weight=1)
+            mode_frame.grid_rowconfigure(0, weight=1)
+            mode_frame.grid_rowconfigure(1, weight=1)
+            mode_frame.pack(side="left", padx=5, pady=5)
 
+            ctk.CTkLabel(mode_frame, text="Min Icon Size:", fg_color="transparent").grid(row=0, column=0, sticky="nsew")
+            bbox_dim_frame = ctk.CTkFrame(mode_frame)
             vcmd = (self.frame.register(self.validate_int), "%P")
-            
-            
             self.standard_bbox_width_entry = tk.Entry(
                 bbox_dim_frame,
                 textvariable=self.min_bbox_width,
@@ -144,9 +176,7 @@ class ImageViewer:
                 validatecommand=vcmd
             )
             self.standard_bbox_width_entry.pack(side=tk.LEFT, padx=1, pady=5)
-
-            tk.Label(bbox_dim_frame, text="x").pack(side=tk.LEFT, padx=1, pady=5)
-            
+            ctk.CTkLabel(bbox_dim_frame, text="x").pack(side=tk.LEFT, padx=1, pady=5)
             self.standard_bbox_height_entry = tk.Entry(
                 bbox_dim_frame,
                 textvariable=self.min_bbox_height,
@@ -155,8 +185,19 @@ class ImageViewer:
                 validatecommand=vcmd
             )
             self.standard_bbox_height_entry.pack(side=tk.LEFT, padx=1, pady=5)
+            bbox_dim_frame.grid(row=1, column=0, sticky="nsew")
+            
 
-            bbox_dim_frame.pack(side=tk.TOP, padx=5, pady=5)
+            for i in modeenum:
+                button = ctk.CTkButton(mode_frame,
+                                    text=i.text(), 
+                                    command=lambda i=i.value: self.select(i),
+                                    border_color="black",
+                                    border_width=2)
+                button.grid(row = i.value%2, column = i.value//2 + 1, sticky="nsew", padx=2, pady=2)
+                self.modebuttons.append(button)
+
+            self.select(modeenum.MODE_FINDSPRITE.value)
 
         # Bind mouse and keyboard events
         self.bind_events(master)
@@ -320,29 +361,30 @@ class ImageViewer:
         color = (255, 0, 0, 64) if self.editMode else (0, 0, 0, 0)
         draw.rectangle([(0, 0), (xsize-1, ysize-1)], outline=(255, 0, 0, 255), fill=color,  width=1)  # Red
         text = str(description)
-        bbox = draw.textbbox((0, 0), text)
-        text_width = bbox[2] - bbox[0]
-        text_height = bbox[3] - bbox[1]
+        if text:
+            bbox = draw.textbbox((0, 0), text)
+            text_width = bbox[2] - bbox[0]
+            text_height = bbox[3] - bbox[1]
 
-        # Padding around text
-        offset = 6
-        padding = 4
+            # Padding around text
+            offset = 6
+            padding = 4
 
-        # Background box under text
-        text_bg_box = [
-            offset - padding,
-            offset - padding,
-            offset + text_width + padding,
-            offset + text_height + padding
-        ]
+            # Background box under text
+            text_bg_box = [
+                offset - padding,
+                offset - padding,
+                offset + text_width + padding,
+                offset + text_height + padding
+            ]
 
-        draw.rectangle(
-            text_bg_box,
-            fill=(0, 0, 0, 64)  # semi-transparent black
-        )
+            draw.rectangle(
+                text_bg_box,
+                fill=(0, 0, 0, 64)  # semi-transparent black
+            )
 
-        # Draw text on top
-        draw.text((offset, offset), text, fill=(255, 255, 255, 255))
+            # Draw text on top
+            draw.text((offset, offset), text, fill=(255, 255, 255, 255))
 
         # Convert to Tkinter-compatible image
         tk_box_img = ImageTk.PhotoImage(box_img)
@@ -508,10 +550,13 @@ class ImageViewer:
         # Configure scroll region to new image size
         self.canvas.config(scrollregion=(0, 0, scaled_width, scaled_height))
 
-    def zoom(self, factor):
+    def zoom(self, factor, abolute = False):
         if self.image is None:
             return
-        self.scale *= factor
+        if abolute:
+            self.scale = factor
+        else:
+            self.scale *= factor
         self.display_image()
         self.redraw_boxes()  # You can recreate/redraw boxes after zooming in or out
 
@@ -730,16 +775,9 @@ class ImageViewer:
     def do_pan(self, event):
         # Move the canvas to new position relative to mark
         self.canvas.scan_dragto(event.x, event.y, gain=1)
-def main(args):
-    root = tk.Toplevel()
-    app = ImageViewer(root, *args, editmode=True)
-    root.mainloop()
 
-def viewMode(args):
-    root = tk.Toplevel()
-    app = ImageViewer(root, *args, editmode=False)
-    root.mainloop()
-
-if __name__ == "__main__":
-    args = sys.argv[1:]
-    main(args)
+def viewMode(image_path, savedata_path, sheetname, mod_image_path = None):
+    root = ctk.CTkToplevel()
+    app = ImageViewer(root, image_path, savedata_path, sheetname, mod_image_path)
+    root.after(10, lambda: root.iconbitmap("./icons/UIManagerLogo.ico"))
+    # root.mainloop()
