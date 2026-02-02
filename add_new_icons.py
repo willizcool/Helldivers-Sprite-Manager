@@ -14,11 +14,19 @@ import customtkinter as ctk
 
 
 class ImageViewer:
+
+    def on_exit(self):
+        self.caller.load_mod_preview()
+        self.master.destroy()
     
-    def __init__(self,master, image_path, savedata_path, sheetname, mod_image_path=None):
+    def __init__(self,caller,master, image_path, savedata_path, sheetname, mod_image_path=None):
         master.title("Tkinter Image Viewer with Zoom and Pan")
         master.geometry("1280x720")
+        master.protocol("WM_DELETE_WINDOW", self.on_exit)
+        self.caller = caller
+        self.master = master
         self.editMode = True if mod_image_path is None else False
+
 
         # Variables
         self.scale = 1.0
@@ -114,7 +122,7 @@ class ImageViewer:
                                     border_width=2,
                                     width=50,
                                     image=ImageTk.PhotoImage(Image.open("./icons/save.png").resize((20,20))),
-                                    command=self.save_locations if self.editMode else self.save_image)
+                                    command=self.save_locations)
         save_button.pack(side="left", padx=5, pady=5, expand=False, anchor="nw", fill="y")
 
         zoom_in_button = ctk.CTkButton(bottom_frame, 
@@ -204,6 +212,9 @@ class ImageViewer:
         self.canvas_refresh()
 
     def save_locations(self):
+        if not self.editMode:
+            self.save_image()
+            return
         details_by_id = {
             str(d["ID"]): d
             for d in self.data.get("DETAILS", [])
@@ -776,8 +787,8 @@ class ImageViewer:
         # Move the canvas to new position relative to mark
         self.canvas.scan_dragto(event.x, event.y, gain=1)
 
-def viewMode(image_path, savedata_path, sheetname, mod_image_path = None):
+def viewMode(caller, image_path, savedata_path, sheetname, mod_image_path = None):
     root = ctk.CTkToplevel()
-    app = ImageViewer(root, image_path, savedata_path, sheetname, mod_image_path)
+    app = ImageViewer(caller, root, image_path, savedata_path, sheetname, mod_image_path)
     root.after(10, lambda: root.iconbitmap("./icons/UIManagerLogo.ico"))
     # root.mainloop()

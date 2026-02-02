@@ -488,6 +488,7 @@ class SheetManagerGUI(ctk.CTk, TkinterDnD.DnDWrapper):
         loadedsheet = Image.open(modded_sheet) #in case not png
         loadedsheet.save(destfile, "png")
         self.load_mod_sheet_list()
+        self.load_mod_preview()
     def delete_modded_sheet(self):
         if not self.selected_mod or not self.selected_sheet:
             return
@@ -498,6 +499,7 @@ class SheetManagerGUI(ctk.CTk, TkinterDnD.DnDWrapper):
             return
         shutil.rmtree(modded_path)
         self.load_mod_sheet_list()
+        self.load_mod_preview()
 
     def export_modded_sheet(self, export_icons=False):
         if not self.selected_mod:
@@ -560,9 +562,7 @@ class SheetManagerGUI(ctk.CTk, TkinterDnD.DnDWrapper):
     def modify_icon_positions(self):
         image_path = self.sheet_path / self.selected_sheet / "original" / f"{self.selected_sheet}.png"
         save_path = self.sheet_path / self.selected_sheet / "original"
-        AddIcon.viewMode(image_path,save_path,self.selected_sheet)
-        #self.launch_python_program(".\\SpriteFinder\\add_new_icons.py",f"{Path(self.sheet_path)}\\{self.selected_sheet}",self.selected_sheet)
-        #self.launch_exe_program(".\\deps\\add_new_icons.exe",f"{Path(self.sheet_path)}\\{self.selected_sheet}",self.selected_sheet)
+        AddIcon.viewMode(self,image_path,save_path,self.selected_sheet)
 
     def modify_mod_icons(self):
         image_path = self.sheet_path / self.selected_sheet / "original" / f"{self.selected_sheet}.png"
@@ -572,7 +572,7 @@ class SheetManagerGUI(ctk.CTk, TkinterDnD.DnDWrapper):
             mod_image_path.parent.mkdir(parents=True, exist_ok=True)
             shutil.copy(image_path, mod_image_path)
             self.load_mod_sheet_list()
-        AddIcon.viewMode(image_path,save_path,self.selected_sheet,mod_image_path)
+        AddIcon.viewMode(self,image_path,save_path,self.selected_sheet,mod_image_path)
     def launch_python_program(self, script_name, *args):
         """Launches another Python script."""
         if not self.selected_sheet:
