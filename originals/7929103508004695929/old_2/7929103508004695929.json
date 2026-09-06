@@ -1,0 +1,199 @@
+{
+    "SHEETNAME": "7929103508004695929",
+    "DEFAULTMINBBOX": [
+        264,
+        264
+    ],
+    "DETAILS": [
+        {
+            "Order": 19,
+            "SaveID": 61,
+            "ID": "f404a8f4d67a6b6c35846114a1b27513",
+            "DESCRIPTION": "Eagle Smoke Strike",
+            "Group": "offense",
+            "SearchBBOX": [
+                339,
+                611,
+                524,
+                796
+            ],
+            "ExpandedBBOX": [
+                300,
+                572,
+                564,
+                836
+            ]
+        },
+        {
+            "Order": 18,
+            "SaveID": 62,
+            "ID": "5a456941aaf3dce8d3862387975cc57e",
+            "DESCRIPTION": "EMS Mortar Sentry",
+            "Group": "defense",
+            "SearchBBOX": [
+                907,
+                623,
+                1104,
+                792
+            ],
+            "ExpandedBBOX": [
+                873,
+                588,
+                1137,
+                852
+            ]
+        },
+        {
+            "Order": 0,
+            "SaveID": 0,
+            "ID": "53fb5319a4806a93ec4ca2fbb83e4b32",
+            "DESCRIPTION": "",
+            "Group": "None",
+            "SearchBBOX": [
+                1339,
+                356,
+                1496,
+                501
+            ],
+            "ExpandedBBOX": [
+                1292,
+                293,
+                1556,
+                557
+            ]
+        },
+        {
+            "Order": 38,
+            "SaveID": 60,
+            "ID": "8339b867929094460ea3c92552ea0e42",
+            "DESCRIPTION": "\"Guard Dog\" Dog Breath",
+            "Group": "supply",
+            "SearchBBOX": [
+                47,
+                619,
+                232,
+                797
+            ],
+            "ExpandedBBOX": [
+                8,
+                576,
+                272,
+                840
+            ]
+        },
+        {
+            "Order": 0,
+            "SaveID": 0,
+            "ID": "027b46c9073efda9b27fdffb198b14c0",
+            "DESCRIPTION": "",
+            "Group": "None",
+            "SearchBBOX": [
+                1043,
+                347,
+                1224,
+                500
+            ],
+            "ExpandedBBOX": [
+                1002,
+                292,
+                1266,
+                556
+            ]
+        },
+        {
+            "Order": 42,
+            "SaveID": 94,
+            "ID": "1705ff9f7e9816b0b52920bb826367d9",
+            "DESCRIPTION": "C4 Pack",
+            "Group": "supply",
+            "SearchBBOX": [
+                1189,
+                623,
+                1384,
+                804
+            ],
+            "ExpandedBBOX": [
+                1155,
+                582,
+                1419,
+                846
+            ]
+        },
+        {
+            "Order": 39,
+            "SaveID": 86,
+            "ID": "15b01f9b9783f583abd657c69a461941",
+            "DESCRIPTION": "\"Guard Dog\" K-9",
+            "Group": "supply",
+            "SearchBBOX": [
+                1615,
+                334,
+                1801,
+                513
+            ],
+            "ExpandedBBOX": [
+                1576,
+                292,
+                1840,
+                556
+            ]
+        },
+        {
+            "Order": 41,
+            "SaveID": 88,
+            "ID": "c9fc86bfa0aa2df76b4ab75bc55c50ee",
+            "DESCRIPTION": "Speargun",
+            "Group": "supply",
+            "SearchBBOX": [
+                1606,
+                66,
+                1818,
+                204
+            ],
+            "ExpandedBBOX": [
+                1580,
+                3,
+                1844,
+                267
+            ]
+        },
+        {
+            "Order": 40,
+            "SaveID": 87,
+            "ID": "79e65cbd10638e329fee2219b1505863",
+            "DESCRIPTION": "Expendable Napalm",
+            "Group": "supply",
+            "SearchBBOX": [
+                1027,
+                54,
+                1244,
+                240
+            ],
+            "ExpandedBBOX": [
+                1004,
+                4,
+                1268,
+                268
+            ]
+        },
+        {
+            "Order": 11,
+            "SaveID": 72,
+            "ID": "88059ee6d871fcd762be8bc6052e43f6",
+            "DESCRIPTION": "Earth Flag",
+            "Group": "mission",
+            "SearchBBOX": [
+                615,
+                611,
+                824,
+                820
+            ],
+            "ExpandedBBOX": [
+                588,
+                584,
+                852,
+                848
+            ]
+        }
+    ]
+}

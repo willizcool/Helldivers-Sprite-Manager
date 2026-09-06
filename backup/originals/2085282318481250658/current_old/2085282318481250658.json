@@ -1,0 +1,47 @@
+{
+    "SHEETNAME": "2085282318481250658",
+    "DEFAULTMINBBOX": [
+        264,
+        264
+    ],
+    "DETAILS": [
+        {
+            "Order": 3,
+            "SaveID": 35,
+            "ID": "c0086539d2b040745e997c4823da488d",
+            "DESCRIPTION": "Fast Recon Vehicle",
+            "Group": "supply",
+            "SearchBBOX": [
+                2387,
+                927,
+                2508,
+                1100
+            ],
+            "ExpandedBBOX": [
+                2316,
+                882,
+                2580,
+                1146
+            ]
+        },
+        {
+            "Order": 2,
+            "SaveID": 36,
+            "ID": "7d6fd47acc038da186596fc7316396d2",
+            "DESCRIPTION": "Emancipator Exosuit",
+            "Group": "supply",
+            "SearchBBOX": [
+                907,
+                1207,
+                1108,
+                1388
+            ],
+            "ExpandedBBOX": [
+                876,
+                1166,
+                1140,
+                1430
+            ]
+        }
+    ]
+}

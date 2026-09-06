@@ -1,0 +1,126 @@
+{
+    "SHEETNAME": "7929103508004695929",
+    "DEFAULTMINBBOX": [
+        264,
+        264
+    ],
+    "DETAILS": [
+        {
+            "Order": 19,
+            "SaveID": 61,
+            "ID": "f404a8f4d67a6b6c35846114a1b27513",
+            "DESCRIPTION": "Eagle Smoke Strike",
+            "Group": "offense",
+            "SearchBBOX": [915, 615, 1100, 800],
+            "ExpandedBBOX": [876, 576, 1140, 840]
+        },
+        {
+            "Order": 18,
+            "SaveID": 62,
+            "ID": "5a456941aaf3dce8d3862387975cc57e",
+            "DESCRIPTION": "EMS Mortar Sentry",
+            "Group": "defense",
+            "SearchBBOX": [1483, 623, 1680, 792],
+            "ExpandedBBOX": [1449, 588, 1713, 852]
+        },
+        {
+            "Order": 0,
+            "SaveID": 0,
+            "ID": "53fb5319a4806a93ec4ca2fbb83e4b32",
+            "DESCRIPTION": "",
+            "Group": "None",
+            "SearchBBOX": [59, 640, 216, 785],
+            "ExpandedBBOX": [12, 577, 276, 841]
+        },
+        {
+            "Order": 38,
+            "SaveID": 60,
+            "ID": "8339b867929094460ea3c92552ea0e42",
+            "DESCRIPTION": "\"Guard Dog\" Dog Breath",
+            "Group": "supply",
+            "SearchBBOX": [623, 619, 808, 797],
+            "ExpandedBBOX": [584, 576, 848, 840]
+        },
+        {
+            "Order": 0,
+            "SaveID": 0,
+            "ID": "027b46c9073efda9b27fdffb198b14c0",
+            "DESCRIPTION": "",
+            "Group": "None",
+            "SearchBBOX": [1619, 347, 1800, 500],
+            "ExpandedBBOX": [1578, 292, 1842, 556]
+        },
+        {
+            "Order": 42,
+            "SaveID": 94,
+            "ID": "1705ff9f7e9816b0b52920bb826367d9",
+            "DESCRIPTION": "C4 Pack",
+            "Group": "supply",
+            "SearchBBOX": [37, 907, 232, 1088],
+            "ExpandedBBOX": [3, 866, 267, 1130]
+        },
+        {
+            "Order": 39,
+            "SaveID": 86,
+            "ID": "15b01f9b9783f583abd657c69a461941",
+            "DESCRIPTION": "\"Guard Dog\" K-9",
+            "Group": "supply",
+            "SearchBBOX": [335, 618, 521, 797],
+            "ExpandedBBOX": [296, 576, 560, 840]
+        },
+        {
+            "Order": 41,
+            "SaveID": 88,
+            "ID": "c9fc86bfa0aa2df76b4ab75bc55c50ee",
+            "DESCRIPTION": "Speargun",
+            "Group": "supply",
+            "SearchBBOX": [1318, 354, 1530, 492],
+            "ExpandedBBOX": [1292, 291, 1556, 555]
+        },
+        {
+            "Order": 40,
+            "SaveID": 87,
+            "ID": "79e65cbd10638e329fee2219b1505863",
+            "DESCRIPTION": "Expendable Napalm",
+            "Group": "supply",
+            "SearchBBOX": [1315, 54, 1532, 240],
+            "ExpandedBBOX": [1292, 4, 1556, 268]
+        },
+        {
+            "Order": 11,
+            "SaveID": 72,
+            "ID": "88059ee6d871fcd762be8bc6052e43f6",
+            "DESCRIPTION": "Earth Flag",
+            "Group": "mission",
+            "SearchBBOX": [1191, 615, 1400, 824],
+            "ExpandedBBOX": [1164, 588, 1428, 852]
+        },
+        {
+            "Order": 0,
+            "SaveID": 98,
+            "ID": "f5a5d25ebd5e0069a7bd97671cd9d9be",
+            "DESCRIPTION": "Creamator",
+            "Group": "supply",
+            "SearchBBOX": [1018, 344, 1256, 508],
+            "ExpandedBBOX": [1005, 294, 1269, 558]
+        },
+        {
+            "Order": 0,
+            "SaveID": 0,
+            "ID": "ce88d163ca5363321395e9ddddb87d1d",
+            "DESCRIPTION": "",
+            "Group": "DEFAULT",
+            "SearchBBOX": [1639, 77, 1786, 236],
+            "ExpandedBBOX": [1583, 7, 1847, 271]
+        },
+        {
+            "Order": 0,
+            "SaveID": 100,
+            "ID": "07f6e37565d5fad84d856cafb35b9847",
+            "DESCRIPTION": "Breakthrough Exosuit",
+            "Group": "supply",
+            "SearchBBOX": [1035, 42, 1228, 236],
+            "ExpandedBBOX": [1000, 7, 1264, 271]
+        }
+    ]
+}

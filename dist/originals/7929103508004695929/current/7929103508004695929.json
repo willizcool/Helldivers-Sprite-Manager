@@ -1,0 +1,237 @@
+{
+    "SHEETNAME": "7929103508004695929",
+    "DEFAULTMINBBOX": [
+        264,
+        264
+    ],
+    "DETAILS": [
+        {
+            "Order": 19,
+            "SaveID": 61,
+            "ID": "f404a8f4d67a6b6c35846114a1b27513",
+            "DESCRIPTION": "Eagle Smoke Strike",
+            "Group": "offense",
+            "SearchBBOX": [
+                51,
+                899,
+                236,
+                1084
+            ],
+            "ExpandedBBOX": [
+                12,
+                860,
+                276,
+                1124
+            ]
+        },
+        {
+            "Order": 18,
+            "SaveID": 62,
+            "ID": "5a456941aaf3dce8d3862387975cc57e",
+            "DESCRIPTION": "EMS Mortar Sentry",
+            "Group": "defense",
+            "SearchBBOX": [
+                907,
+                911,
+                1104,
+                1080
+            ],
+            "ExpandedBBOX": [
+                873,
+                876,
+                1137,
+                1140
+            ]
+        },
+        {
+            "Order": 0,
+            "SaveID": 0,
+            "ID": "53fb5319a4806a93ec4ca2fbb83e4b32",
+            "DESCRIPTION": "",
+            "Group": "None",
+            "SearchBBOX": [
+                635,
+                640,
+                792,
+                785
+            ],
+            "ExpandedBBOX": [
+                588,
+                577,
+                852,
+                841
+            ]
+        },
+        {
+            "Order": 38,
+            "SaveID": 60,
+            "ID": "8339b867929094460ea3c92552ea0e42",
+            "DESCRIPTION": "\"Guard Dog\" Dog Breath",
+            "Group": "supply",
+            "SearchBBOX": [
+                1199,
+                623,
+                1384,
+                801
+            ],
+            "ExpandedBBOX": [
+                1160,
+                580,
+                1424,
+                844
+            ]
+        },
+        {
+            "Order": 0,
+            "SaveID": 0,
+            "ID": "027b46c9073efda9b27fdffb198b14c0",
+            "DESCRIPTION": "",
+            "Group": "None",
+            "SearchBBOX": [
+                339,
+                631,
+                520,
+                784
+            ],
+            "ExpandedBBOX": [
+                298,
+                576,
+                562,
+                840
+            ]
+        },
+        {
+            "Order": 42,
+            "SaveID": 94,
+            "ID": "1705ff9f7e9816b0b52920bb826367d9",
+            "DESCRIPTION": "C4 Pack",
+            "Group": "supply",
+            "SearchBBOX": [
+                1189,
+                911,
+                1384,
+                1092
+            ],
+            "ExpandedBBOX": [
+                1155,
+                870,
+                1419,
+                1134
+            ]
+        },
+        {
+            "Order": 39,
+            "SaveID": 86,
+            "ID": "15b01f9b9783f583abd657c69a461941",
+            "DESCRIPTION": "\"Guard Dog\" K-9",
+            "Group": "supply",
+            "SearchBBOX": [
+                911,
+                622,
+                1097,
+                801
+            ],
+            "ExpandedBBOX": [
+                872,
+                580,
+                1136,
+                844
+            ]
+        },
+        {
+            "Order": 41,
+            "SaveID": 88,
+            "ID": "c9fc86bfa0aa2df76b4ab75bc55c50ee",
+            "DESCRIPTION": "Speargun",
+            "Group": "supply",
+            "SearchBBOX": [
+                38,
+                638,
+                250,
+                776
+            ],
+            "ExpandedBBOX": [
+                12,
+                575,
+                276,
+                839
+            ]
+        },
+        {
+            "Order": 11,
+            "SaveID": 72,
+            "ID": "88059ee6d871fcd762be8bc6052e43f6",
+            "DESCRIPTION": "Earth Flag",
+            "Group": "mission",
+            "SearchBBOX": [
+                615,
+                903,
+                824,
+                1112
+            ],
+            "ExpandedBBOX": [
+                588,
+                876,
+                852,
+                1140
+            ]
+        },
+        {
+            "Order": 0,
+            "SaveID": 98,
+            "ID": "f5a5d25ebd5e0069a7bd97671cd9d9be",
+            "DESCRIPTION": "Creamator",
+            "Group": "supply",
+            "SearchBBOX": [
+                1594,
+                344,
+                1832,
+                508
+            ],
+            "ExpandedBBOX": [
+                1581,
+                294,
+                1845,
+                558
+            ]
+        },
+        {
+            "Order": 0,
+            "SaveID": 0,
+            "ID": "ce88d163ca5363321395e9ddddb87d1d",
+            "DESCRIPTION": "",
+            "Group": "DEFAULT",
+            "SearchBBOX": [
+                1351,
+                365,
+                1498,
+                524
+            ],
+            "ExpandedBBOX": [
+                1295,
+                295,
+                1559,
+                559
+            ]
+        },
+        {
+            "Order": 0,
+            "SaveID": 100,
+            "ID": "07f6e37565d5fad84d856cafb35b9847",
+            "DESCRIPTION": "Breakthrough Exosuit",
+            "Group": "supply",
+            "SearchBBOX": [
+                1611,
+                42,
+                1804,
+                236
+            ],
+            "ExpandedBBOX": [
+                1576,
+                7,
+                1840,
+                271
+            ]
+        }
+    ]
+}

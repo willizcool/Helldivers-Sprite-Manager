@@ -1,0 +1,963 @@
+{
+    "SHEETNAME": "5910807712535589068",
+    "DEFAULTMINBBOX": [
+        264,
+        264
+    ],
+    "DETAILS": [
+        {
+            "Order": 21,
+            "SaveID": 1,
+            "ID": "176d495e3f289f313d3f0e790eb22d00",
+            "DESCRIPTION": "Quasar Cannon",
+            "Group": "supply",
+            "SearchBBOX": [2727, 1047, 2935, 1222],
+            "ExpandedBBOX": [2700, 1005, 2964, 1269]
+        },
+        {
+            "Order": 23,
+            "SaveID": 7,
+            "ID": "824976db25299180b334d5b3a1c73277",
+            "DESCRIPTION": "Arc Thrower",
+            "Group": "supply",
+            "SearchBBOX": [903, 1423, 1112, 1568],
+            "ExpandedBBOX": [875, 1359, 1139, 1623]
+        },
+        {
+            "Order": 12,
+            "SaveID": 8,
+            "ID": "429e2d482e8fdada35a98431161d66e3",
+            "DESCRIPTION": "Airburst Rocket Launcher",
+            "Group": "supply",
+            "SearchBBOX": [1177, 1409, 1414, 1564],
+            "ExpandedBBOX": [1165, 1360, 1429, 1624]
+        },
+        {
+            "Order": 24,
+            "SaveID": 81,
+            "ID": "3870b6489775611da5571514ef3bb8b0",
+            "DESCRIPTION": "Epoch",
+            "Group": "supply",
+            "SearchBBOX": [3023, 1047, 3217, 1228],
+            "ExpandedBBOX": [2988, 1006, 3252, 1270]
+        },
+        {
+            "Order": 10,
+            "SaveID": 2,
+            "ID": "aa855d9875fdbcbfd34a35b94b97629e",
+            "DESCRIPTION": "Expendable Anti-Tank",
+            "Group": "supply",
+            "SearchBBOX": [39, 1135, 249, 1276],
+            "ExpandedBBOX": [12, 1071, 276, 1335]
+        },
+        {
+            "Order": 4,
+            "SaveID": 3,
+            "ID": "9565df87e8122cf8a6e1a1de3114be28",
+            "DESCRIPTION": "Medium Machine Gun",
+            "Group": "supply",
+            "SearchBBOX": [615, 1123, 824, 1284],
+            "ExpandedBBOX": [588, 1072, 852, 1336]
+        },
+        {
+            "Order": 5,
+            "SaveID": 4,
+            "ID": "b3364997f1012c22beaf05a48dc5ecfe",
+            "DESCRIPTION": "Stalwart",
+            "Group": "supply",
+            "SearchBBOX": [903, 1131, 1115, 1285],
+            "ExpandedBBOX": [877, 1076, 1141, 1340]
+        },
+        {
+            "Order": 20,
+            "SaveID": 5,
+            "ID": "719bb3f74d8aae9f6a7733ace43e1327",
+            "DESCRIPTION": "Laser Cannon",
+            "Group": "supply",
+            "SearchBBOX": [1191, 1111, 1400, 1293],
+            "ExpandedBBOX": [1162, 1075, 1426, 1339]
+        },
+        {
+            "Order": 6,
+            "SaveID": 6,
+            "ID": "59bd78006677308713ef5c988898106e",
+            "DESCRIPTION": "Heavy Machine Gun",
+            "Group": "supply",
+            "SearchBBOX": [1475, 1123, 1693, 1294],
+            "ExpandedBBOX": [1447, 1075, 1711, 1339]
+        },
+        {
+            "Order": 1,
+            "SaveID": 34,
+            "ID": "f2fbc442dbd5da966e4f9ea744417bb7",
+            "DESCRIPTION": "Patriot Exosuit",
+            "Group": "supply",
+            "SearchBBOX": [3707, 707, 3908, 892],
+            "ExpandedBBOX": [3676, 668, 3940, 932]
+        },
+        {
+            "Order": 8,
+            "SaveID": 29,
+            "ID": "c6189b934be1f1782db521a44706063b",
+            "DESCRIPTION": "Grenade Launcher",
+            "Group": "supply",
+            "SearchBBOX": [2054, 1219, 2264, 1372],
+            "ExpandedBBOX": [2027, 1164, 2291, 1428]
+        },
+        {
+            "Order": 16,
+            "SaveID": 37,
+            "ID": "93fc9e64ea0f987b5d591373463592ef",
+            "DESCRIPTION": "Anti-Materiel Rifle",
+            "Group": "supply",
+            "SearchBBOX": [3699, 1003, 3917, 1170],
+            "ExpandedBBOX": [3676, 955, 3940, 1219]
+        },
+        {
+            "Order": 11,
+            "SaveID": 38,
+            "ID": "57336df4e21801b144ec68250648e7a9",
+            "DESCRIPTION": "Recoilless Rifle",
+            "Group": "supply",
+            "SearchBBOX": [3319, 1039, 3528, 1186],
+            "ExpandedBBOX": [3292, 981, 3556, 1245]
+        },
+        {
+            "Order": 19,
+            "SaveID": 39,
+            "ID": "fec3d8017c0b622c5558349c50615c7f",
+            "DESCRIPTION": "Railgun",
+            "Group": "supply",
+            "SearchBBOX": [2439, 1079, 2648, 1209],
+            "ExpandedBBOX": [2412, 1012, 2676, 1276]
+        },
+        {
+            "Order": 13,
+            "SaveID": 40,
+            "ID": "93c77e5cd6f056d9b22b0d419ba963c1",
+            "DESCRIPTION": "Spear",
+            "Group": "none",
+            "SearchBBOX": [3047, 755, 3224, 939],
+            "ExpandedBBOX": [3004, 715, 3268, 979]
+        },
+        {
+            "Order": 13,
+            "SaveID": 40,
+            "ID": "93c77e5cd6f056d9b22b0d419ba963c1",
+            "DESCRIPTION": "Spear",
+            "Group": "supply",
+            "SearchBBOX": [2167, 899, 2344, 1083],
+            "ExpandedBBOX": [2124, 859, 2388, 1123]
+        },
+        {
+            "Order": 22,
+            "SaveID": 42,
+            "ID": "fd78a6a455016b1de2a8dcca3d7e8f67",
+            "DESCRIPTION": "Flamethrower",
+            "Group": "supply",
+            "SearchBBOX": [3607, 1287, 3817, 1464],
+            "ExpandedBBOX": [3580, 1244, 3844, 1508]
+        },
+        {
+            "Order": 41,
+            "SaveID": 15,
+            "ID": "6e17824ddc815c84a1f9ae8482bc83cd",
+            "DESCRIPTION": "W.A.S.P. Launcher",
+            "Group": "supply",
+            "SearchBBOX": [3306, 1313, 3509, 1476],
+            "ExpandedBBOX": [3276, 1263, 3540, 1527]
+        },
+        {
+            "Order": 27,
+            "SaveID": 30,
+            "ID": "b27cdc9ecc31c3c066c2e693a235fb49",
+            "DESCRIPTION": "Jump Pack",
+            "Group": "supply",
+            "SearchBBOX": [2938, 1627, 3109, 1796],
+            "ExpandedBBOX": [2892, 1580, 3156, 1844]
+        },
+        {
+            "Order": 27,
+            "SaveID": 30,
+            "ID": "b27cdc9ecc31c3c066c2e693a235fb49",
+            "DESCRIPTION": "Jump Pack 2",
+            "Group": "None",
+            "SearchBBOX": [2650, 1627, 2821, 1796],
+            "ExpandedBBOX": [2604, 1580, 2868, 1844]
+        },
+        {
+            "Order": 30,
+            "SaveID": 46,
+            "ID": "a316f9e610000be0280d6eaa942dcf65",
+            "DESCRIPTION": "Supply Pack",
+            "Group": "supply",
+            "SearchBBOX": [1771, 1691, 1960, 1864],
+            "ExpandedBBOX": [1737, 1645, 2001, 1909]
+        },
+        {
+            "Order": 18,
+            "SaveID": 45,
+            "ID": "c3e891cd7d467fedc72b228a0ebf748f",
+            "DESCRIPTION": "Autocannon",
+            "Group": "supply",
+            "SearchBBOX": [615, 1431, 824, 1564],
+            "ExpandedBBOX": [586, 1360, 850, 1624]
+        },
+        {
+            "Order": 17,
+            "SaveID": 44,
+            "ID": "b3b5483675afaf880fac71796c44f190",
+            "DESCRIPTION": "Sterilizer",
+            "Group": "supply",
+            "SearchBBOX": [43, 1399, 244, 1585],
+            "ExpandedBBOX": [12, 1360, 276, 1624]
+        },
+        {
+            "Order": 14,
+            "SaveID": 43,
+            "ID": "ae02ff732f03e955d6d2ffd2d3150a2d",
+            "DESCRIPTION": "Commando",
+            "Group": "supply",
+            "SearchBBOX": [2935, 1331, 3112, 1516],
+            "ExpandedBBOX": [2892, 1292, 3156, 1556]
+        },
+        {
+            "Order": 0,
+            "SaveID": 0,
+            "ID": "202d81894119207c53ad94e5f4594dcb",
+            "DESCRIPTION": "",
+            "Group": "None",
+            "SearchBBOX": [926, 1691, 1096, 1836],
+            "ExpandedBBOX": [877, 1645, 1141, 1909]
+        },
+        {
+            "Order": 11,
+            "SaveID": 31,
+            "ID": "5458eeb81f8c38d08633f08886cc0563",
+            "DESCRIPTION": "Orbital Smoke Strike",
+            "Group": "offense",
+            "SearchBBOX": [1199, 1999, 1392, 2164],
+            "ExpandedBBOX": [1163, 1936, 1427, 2200]
+        },
+        {
+            "Order": 4,
+            "SaveID": 17,
+            "ID": "5c195f23fffacb04dcd91425685324e6",
+            "DESCRIPTION": "Orbital 120mm HE Barrage",
+            "Group": "offense",
+            "SearchBBOX": [911, 1998, 1104, 2164],
+            "ExpandedBBOX": [879, 1936, 1143, 2200]
+        },
+        {
+            "Order": 0,
+            "SaveID": 0,
+            "ID": "a798a73af16c477f301216b0a86bb412",
+            "DESCRIPTION": "",
+            "Group": "None",
+            "SearchBBOX": [3219, 1595, 3400, 1740],
+            "ExpandedBBOX": [3174, 1547, 3438, 1811]
+        },
+        {
+            "Order": 31,
+            "SaveID": 12,
+            "ID": "58d8e8525dfb364a4d89e4c700624165",
+            "DESCRIPTION": "Ballistic Shield Backpack",
+            "Group": "supply",
+            "SearchBBOX": [3599, 1579, 3784, 1748],
+            "ExpandedBBOX": [3560, 1532, 3824, 1796]
+        },
+        {
+            "Order": 33,
+            "SaveID": 11,
+            "ID": "50dd8633a682c2d122c4875a7839bb12",
+            "DESCRIPTION": "Shield Generator Pack",
+            "Group": "supply",
+            "SearchBBOX": [2063, 1483, 2248, 1652],
+            "ExpandedBBOX": [2024, 1436, 2288, 1700]
+        },
+        {
+            "Order": 36,
+            "SaveID": 10,
+            "ID": "f9619c2a0972d86ccab49362fe0e93da",
+            "DESCRIPTION": "\"Guard Dog\" Rover",
+            "Group": "supply",
+            "SearchBBOX": [1775, 1391, 1960, 1568],
+            "ExpandedBBOX": [1739, 1357, 2003, 1621]
+        },
+        {
+            "Order": 35,
+            "SaveID": 9,
+            "ID": "00760220cc8ed55fc1969f119b4905e1",
+            "DESCRIPTION": "\"Guard Dog\"",
+            "Group": "supply",
+            "SearchBBOX": [1487, 1403, 1672, 1580],
+            "ExpandedBBOX": [1448, 1360, 1712, 1624]
+        },
+        {
+            "Order": 0,
+            "SaveID": 0,
+            "ID": "b20254ddc2ba5c87ee1a123d480b4c44",
+            "DESCRIPTION": "",
+            "Group": "None",
+            "SearchBBOX": [3227, 1899, 3396, 2048],
+            "ExpandedBBOX": [3180, 1842, 3444, 2106]
+        },
+        {
+            "Order": 12,
+            "SaveID": 93,
+            "ID": "093b2a98b3c586b0f69815ae92264271",
+            "DESCRIPTION": "Resupply",
+            "Group": "mission",
+            "SearchBBOX": [2631, 1895, 2840, 2104],
+            "ExpandedBBOX": [2604, 1868, 2868, 2132]
+        },
+        {
+            "Order": 1,
+            "SaveID": 13,
+            "ID": "a814c24beb2ba89a4c798c5425b22471",
+            "DESCRIPTION": "Orbital Precision Strike",
+            "Group": "offense",
+            "SearchBBOX": [2927, 1907, 3120, 2100],
+            "ExpandedBBOX": [2892, 1872, 3156, 2136]
+        },
+        {
+            "Order": 12,
+            "SaveID": 14,
+            "ID": "9baba6fcf20c9e759358450281cefe01",
+            "DESCRIPTION": "Orbital Gas Strike",
+            "Group": "offense",
+            "SearchBBOX": [47, 1983, 240, 2164],
+            "ExpandedBBOX": [12, 1937, 276, 2201]
+        },
+        {
+            "Order": 8,
+            "SaveID": 16,
+            "ID": "c86a009dd1a106236b3ec0a78eb68877",
+            "DESCRIPTION": "Orbital Airburst Strike",
+            "Group": "offense",
+            "SearchBBOX": [623, 1971, 816, 2164],
+            "ExpandedBBOX": [588, 1936, 852, 2200]
+        },
+        {
+            "Order": 15,
+            "SaveID": 18,
+            "ID": "d767be1f827f38f1aa42280c3822b384",
+            "DESCRIPTION": "Eagle 110mm Rocket Pods",
+            "Group": "offense",
+            "SearchBBOX": [2355, 2195, 2541, 2380],
+            "ExpandedBBOX": [2317, 2155, 2581, 2419]
+        },
+        {
+            "Order": 4,
+            "SaveID": 65,
+            "ID": "171a5a5ddf550cc29b039f6113061380",
+            "DESCRIPTION": "Eagle Rearm",
+            "Group": "mission",
+            "SearchBBOX": [2643, 2195, 2829, 2380],
+            "ExpandedBBOX": [2604, 2156, 2868, 2420]
+        },
+        {
+            "Order": 18,
+            "SaveID": 19,
+            "ID": "dd10b27b789a4f2fd933402a75ccb787",
+            "DESCRIPTION": "Eagle Napalm Airstrike",
+            "Group": "offense",
+            "SearchBBOX": [2931, 2195, 3117, 2380],
+            "ExpandedBBOX": [2892, 2156, 3156, 2420]
+        },
+        {
+            "Order": 14,
+            "SaveID": 20,
+            "ID": "08011e3a6bd6386181ccd0a390bc84fb",
+            "DESCRIPTION": "Eagle Cluster Bomb",
+            "Group": "offense",
+            "SearchBBOX": [51, 2259, 237, 2444],
+            "ExpandedBBOX": [12, 2220, 276, 2484]
+        },
+        {
+            "Order": 0,
+            "SaveID": 0,
+            "ID": "41b712c2f53ae6f55714c21d91afc38f",
+            "DESCRIPTION": "",
+            "Group": "None",
+            "SearchBBOX": [339, 2259, 525, 2444],
+            "ExpandedBBOX": [300, 2220, 564, 2484]
+        },
+        {
+            "Order": 13,
+            "SaveID": 21,
+            "ID": "6d6e2486f04a0018d3d11ccac8ff877d",
+            "DESCRIPTION": "Eagle Strafing Run",
+            "Group": "offense",
+            "SearchBBOX": [627, 2259, 813, 2444],
+            "ExpandedBBOX": [588, 2220, 852, 2484]
+        },
+        {
+            "Order": 10,
+            "SaveID": 15,
+            "ID": "82101ed325ef39f52e8400c64f753bb5",
+            "DESCRIPTION": "Orbital EMS Strike",
+            "Group": "offense",
+            "SearchBBOX": [335, 1971, 528, 2164],
+            "ExpandedBBOX": [300, 1936, 564, 2200]
+        },
+        {
+            "Order": 16,
+            "SaveID": 22,
+            "ID": "2e3a067ff121f65e21488a15e5f904f5",
+            "DESCRIPTION": "Eagle Airstrike",
+            "Group": "offense",
+            "SearchBBOX": [915, 2259, 1101, 2444],
+            "ExpandedBBOX": [876, 2220, 1140, 2484]
+        },
+        {
+            "Order": 17,
+            "SaveID": 32,
+            "ID": "82f6551dd02f980d409c56c5c70a3d0f",
+            "DESCRIPTION": "Eagle 500kg Bomb",
+            "Group": "offense",
+            "SearchBBOX": [1202, 2259, 1389, 2444],
+            "ExpandedBBOX": [1164, 2220, 1428, 2484]
+        },
+        {
+            "Order": 6,
+            "SaveID": 23,
+            "ID": "bdf387119968396141739c1e54e42e2d",
+            "DESCRIPTION": "Machine Gun Sentry",
+            "Group": "defense",
+            "SearchBBOX": [623, 2843, 816, 3012],
+            "ExpandedBBOX": [588, 2796, 852, 3060]
+        },
+        {
+            "Order": 7,
+            "SaveID": 24,
+            "ID": "d333c3705f927bdb45bee315d38997cc",
+            "DESCRIPTION": "Gatling Sentry",
+            "Group": "defense",
+            "SearchBBOX": [911, 2843, 1104, 3012],
+            "ExpandedBBOX": [876, 2796, 1140, 3060]
+        },
+        {
+            "Order": 8,
+            "SaveID": 25,
+            "ID": "5f80f0759eb0c91b811ba8fe0eca740b",
+            "DESCRIPTION": "Autocannon Sentry",
+            "Group": "defense",
+            "SearchBBOX": [1199, 2843, 1392, 3012],
+            "ExpandedBBOX": [1164, 2796, 1428, 3060]
+        },
+        {
+            "Order": 2,
+            "SaveID": 85,
+            "ID": "5634d14660bc65bdd9fba3e24b201d0a",
+            "DESCRIPTION": "Solo Silo",
+            "Group": "defense",
+            "SearchBBOX": [1471, 2847, 1696, 3040],
+            "ExpandedBBOX": [1453, 2797, 1717, 3061]
+        },
+        {
+            "Order": 11,
+            "SaveID": 26,
+            "ID": "7f3167a63224210272a63c5ff031808b",
+            "DESCRIPTION": "Tesla Tower",
+            "Group": "defense",
+            "SearchBBOX": [1759, 2831, 1984, 3040],
+            "ExpandedBBOX": [1739, 2798, 2003, 3062]
+        },
+        {
+            "Order": 5,
+            "SaveID": 28,
+            "ID": "8554a8eff14b71c3cf0777255ce0cab0",
+            "DESCRIPTION": "Shield Generator Relay",
+            "Group": "defense",
+            "SearchBBOX": [3199, 3047, 3424, 3232],
+            "ExpandedBBOX": [3180, 2990, 3444, 3254]
+        },
+        {
+            "Order": 1,
+            "SaveID": 84,
+            "ID": "c53359c24a9e3fdc2ad8cea6cb5c5ff7",
+            "DESCRIPTION": "Grenadier Battlement",
+            "Group": "defense",
+            "SearchBBOX": [2335, 3107, 2560, 3264],
+            "ExpandedBBOX": [2317, 3020, 2581, 3284]
+        },
+        {
+            "Order": 6,
+            "SaveID": 47,
+            "ID": "052bc68e3f82e80d214962acb61c2548",
+            "DESCRIPTION": "Orbital Gatling Barrage",
+            "Group": "offense",
+            "SearchBBOX": [3503, 2157, 3696, 2340],
+            "ExpandedBBOX": [3468, 2117, 3732, 2381]
+        },
+        {
+            "Order": 3,
+            "SaveID": 48,
+            "ID": "9ba89b834790e822da4f22224db860e3",
+            "DESCRIPTION": "Orbital Walking Barrage",
+            "Group": "offense",
+            "SearchBBOX": [3791, 2150, 3984, 2340],
+            "ExpandedBBOX": [3756, 2113, 4020, 2377]
+        },
+        {
+            "Order": 2,
+            "SaveID": 68,
+            "ID": "53d9d4eebe6448b6efda34ea7d9604ff",
+            "DESCRIPTION": "SoS Beacon",
+            "Group": "mission",
+            "SearchBBOX": [3495, 2423, 3704, 2632],
+            "ExpandedBBOX": [3468, 2396, 3732, 2660]
+        },
+        {
+            "Order": 3,
+            "SaveID": 50,
+            "ID": "c1300ff05fdb1039f847e9a15f56aa23",
+            "DESCRIPTION": "HMG Emplacement",
+            "Group": "defense",
+            "SearchBBOX": [2919, 2779, 3128, 2948],
+            "ExpandedBBOX": [2892, 2732, 3156, 2996]
+        },
+        {
+            "Order": 0,
+            "SaveID": 0,
+            "ID": "3130f1cdd0995d56f88abcd8d38c3cb7",
+            "DESCRIPTION": "",
+            "Group": "None",
+            "SearchBBOX": [3783, 2423, 3992, 2632],
+            "ExpandedBBOX": [3756, 2396, 4020, 2660]
+        },
+        {
+            "Order": 5,
+            "SaveID": 74,
+            "ID": "1cd02ee585de5971996dde4bf587bbab",
+            "DESCRIPTION": "SSDD/ Upload Data",
+            "Group": "mission",
+            "SearchBBOX": [1479, 2247, 1688, 2456],
+            "ExpandedBBOX": [1452, 2220, 1716, 2484]
+        },
+        {
+            "Order": 8,
+            "SaveID": 75,
+            "ID": "05430ede98b9f96c5ac004e92233db6e",
+            "DESCRIPTION": "Seismic Probe",
+            "Group": "mission",
+            "SearchBBOX": [1767, 2247, 1976, 2456],
+            "ExpandedBBOX": [1740, 2220, 2004, 2484]
+        },
+        {
+            "Order": 9,
+            "SaveID": 53,
+            "ID": "f094f320c6e1518401ff0b2e3f3adb30",
+            "DESCRIPTION": "Orbital Napalm Barrage",
+            "Group": "offense",
+            "SearchBBOX": [1775, 1998, 1968, 2164],
+            "ExpandedBBOX": [1737, 1934, 2001, 2198]
+        },
+        {
+            "Order": 7,
+            "SaveID": 52,
+            "ID": "af46e3ae61b0be5bcced7c76eca5d971",
+            "DESCRIPTION": "Orbital Railcannon Strike",
+            "Group": "offense",
+            "SearchBBOX": [1487, 1971, 1680, 2164],
+            "ExpandedBBOX": [1452, 1936, 1716, 2200]
+        },
+        {
+            "Order": 2,
+            "SaveID": 51,
+            "ID": "35f9d82e0a53a4db1f652ee086bcd660",
+            "DESCRIPTION": "Orbital Laser",
+            "Group": "offense",
+            "SearchBBOX": [2063, 2051, 2256, 2244],
+            "ExpandedBBOX": [2028, 2016, 2292, 2280]
+        },
+        {
+            "Order": 5,
+            "SaveID": 49,
+            "ID": "d8e7f02dd96d4e7943793e93f61b3541",
+            "DESCRIPTION": "Orbital 380mm HE Barrage",
+            "Group": "offense",
+            "SearchBBOX": [3215, 2171, 3408, 2356],
+            "ExpandedBBOX": [3180, 2132, 3444, 2396]
+        },
+        {
+            "Order": 9,
+            "SaveID": 54,
+            "ID": "e97c7379ccc3e3033669c65eb48f69a4",
+            "DESCRIPTION": "Mortar Sentry",
+            "Group": "defense",
+            "SearchBBOX": [2655, 2779, 2832, 2948],
+            "ExpandedBBOX": [2606, 2727, 2870, 2991]
+        },
+        {
+            "Order": 0,
+            "SaveID": 0,
+            "ID": "b69d11440f4d613ecf5b52a2887d1636",
+            "DESCRIPTION": "",
+            "Group": "None",
+            "SearchBBOX": [39, 2843, 248, 3012],
+            "ExpandedBBOX": [12, 2796, 276, 3060]
+        },
+        {
+            "Order": 0,
+            "SaveID": 0,
+            "ID": "92a7a8950459f37848a216102751b4a2",
+            "DESCRIPTION": "",
+            "Group": "None",
+            "SearchBBOX": [327, 2843, 536, 3012],
+            "ExpandedBBOX": [300, 2796, 564, 3060]
+        },
+        {
+            "Order": 32,
+            "SaveID": 55,
+            "ID": "407c32e4d38ba386bdbf412c074a1a4c",
+            "DESCRIPTION": "Directional Shield",
+            "Group": "supply",
+            "SearchBBOX": [3791, 2731, 3976, 2900],
+            "ExpandedBBOX": [3757, 2684, 4021, 2948]
+        },
+        {
+            "Order": 32,
+            "SaveID": 56,
+            "ID": "99ff6e868a05470f51266738c7519ad3",
+            "DESCRIPTION": "Rocket Sentry",
+            "Group": "defense",
+            "SearchBBOX": [3211, 2747, 3408, 2916],
+            "ExpandedBBOX": [3178, 2700, 3442, 2964]
+        },
+        {
+            "Order": 4,
+            "SaveID": 57,
+            "ID": "c8e5e5a851147dbb0eda126d13dbef31",
+            "DESCRIPTION": "Anti-Tank Emplacement",
+            "Group": "defense",
+            "SearchBBOX": [39, 3131, 248, 3300],
+            "ExpandedBBOX": [15, 3081, 279, 3345]
+        },
+        {
+            "Order": 34,
+            "SaveID": 59,
+            "ID": "1813fd5dbba334c14692941e39a6293b",
+            "DESCRIPTION": "Portable Hellbomb",
+            "Group": "supply",
+            "SearchBBOX": [2923, 3067, 3112, 3236],
+            "ExpandedBBOX": [2886, 3020, 3150, 3284]
+        },
+        {
+            "Order": 13,
+            "SaveID": 33,
+            "ID": "1bbb0932b9701c63101ffebcf102671e",
+            "DESCRIPTION": "Flame Sentry",
+            "Group": "defense",
+            "SearchBBOX": [3511, 2731, 3696, 2900],
+            "ExpandedBBOX": [3472, 2684, 3736, 2948]
+        },
+        {
+            "Order": 15,
+            "SaveID": 58,
+            "ID": "04cea6c0d9628939469ebea461bd994d",
+            "DESCRIPTION": "Anti-Tank Mines",
+            "Group": "defense",
+            "SearchBBOX": [2623, 3059, 2848, 3264],
+            "ExpandedBBOX": [2602, 3026, 2866, 3290]
+        },
+        {
+            "Order": 10,
+            "SaveID": 77,
+            "ID": "f0cdaa4203f2516cf3d1157f83dce5ac",
+            "DESCRIPTION": "Dark Fluid Vessel",
+            "Group": "mission",
+            "SearchBBOX": [903, 2535, 1112, 2744],
+            "ExpandedBBOX": [876, 2508, 1140, 2772]
+        },
+        {
+            "Order": 6,
+            "SaveID": 71,
+            "ID": "c5343cbbfc755a88eb55dc042e651754",
+            "DESCRIPTION": "Drill (all)",
+            "Group": "mission",
+            "SearchBBOX": [327, 2535, 536, 2744],
+            "ExpandedBBOX": [300, 2508, 564, 2772]
+        },
+        {
+            "Order": 7,
+            "SaveID": 73,
+            "ID": "9cb133b4a80d5d7bad7999c59961322e",
+            "DESCRIPTION": "Hellbomb",
+            "Group": "mission",
+            "SearchBBOX": [39, 2535, 248, 2744],
+            "ExpandedBBOX": [12, 2508, 276, 2772]
+        },
+        {
+            "Order": 0,
+            "SaveID": 0,
+            "ID": "830a9d1c689b989d15ec6b4ec04405ab",
+            "DESCRIPTION": "",
+            "Group": "None",
+            "SearchBBOX": [2919, 2471, 3128, 2680],
+            "ExpandedBBOX": [2892, 2444, 3156, 2708]
+        },
+        {
+            "Order": 9,
+            "SaveID": 76,
+            "ID": "c4ae3342a86d933ecf85d38272c7fa99",
+            "DESCRIPTION": "Orbital Illumination Flare",
+            "Group": "None",
+            "SearchBBOX": [2343, 2471, 2553, 2680],
+            "ExpandedBBOX": [2316, 2444, 2580, 2708]
+        },
+        {
+            "Order": 1,
+            "SaveID": 67,
+            "ID": "56e72294a72933ef4c8ca856d9f3121a",
+            "DESCRIPTION": "Reinforce",
+            "Group": "mission",
+            "SearchBBOX": [2631, 2471, 2840, 2680],
+            "ExpandedBBOX": [2604, 2444, 2868, 2708]
+        },
+        {
+            "Order": 0,
+            "SaveID": 0,
+            "ID": "fc9ebf66717b4f2813f5b98819490f3b",
+            "DESCRIPTION": "",
+            "Group": "None",
+            "SearchBBOX": [2055, 2327, 2264, 2536],
+            "ExpandedBBOX": [2028, 2300, 2292, 2564]
+        },
+        {
+            "Order": 7,
+            "SaveID": 90,
+            "ID": "156428210b11375025f140e633d0e325",
+            "DESCRIPTION": "Maxigun",
+            "Group": "supply",
+            "SearchBBOX": [311, 1123, 556, 1280],
+            "ExpandedBBOX": [302, 1070, 566, 1334]
+        },
+        {
+            "Order": 29,
+            "SaveID": 82,
+            "ID": "d67b2b0bd76a8a462aa833bae752b241",
+            "DESCRIPTION": "Warp Pack",
+            "Group": "supply",
+            "SearchBBOX": [1218, 1679, 1373, 1866],
+            "ExpandedBBOX": [1164, 1641, 1428, 1905]
+        },
+        {
+            "Order": 28,
+            "SaveID": 66,
+            "ID": "d0937641d41aac0f0bd08b6c8e86b0d7",
+            "DESCRIPTION": "Hover Pack",
+            "Group": "supply",
+            "SearchBBOX": [78, 1691, 209, 1860],
+            "ExpandedBBOX": [12, 1644, 276, 1908]
+        },
+        {
+            "Order": 25,
+            "SaveID": 78,
+            "ID": "49410e16988d55c4c6d09b7a1793d069",
+            "DESCRIPTION": "One True Flag",
+            "Group": "supply",
+            "SearchBBOX": [3495, 1859, 3703, 2052],
+            "ExpandedBBOX": [3467, 1824, 3731, 2088]
+        },
+        {
+            "Order": 26,
+            "SaveID": 91,
+            "ID": "aaba4deb3dc73b5e615852770e08aeb9",
+            "DESCRIPTION": "Defoliation Tool",
+            "Group": "supply",
+            "SearchBBOX": [3771, 1859, 4004, 2024],
+            "ExpandedBBOX": [3756, 1810, 4020, 2074]
+        },
+        {
+            "Order": 9,
+            "SaveID": 79,
+            "ID": "50dde2395a7df5db7bed838cdecc5ca7",
+            "DESCRIPTION": "De-Escalator",
+            "Group": "supply",
+            "SearchBBOX": [1767, 1139, 1976, 1294],
+            "ExpandedBBOX": [1740, 1085, 2004, 1349]
+        },
+        {
+            "Order": 37,
+            "SaveID": 89,
+            "ID": "89ba13c4db0afe294c468f5a64d7b381",
+            "DESCRIPTION": "\"Guard Dog\" Hot Dog",
+            "Group": "supply",
+            "SearchBBOX": [2351, 1907, 2536, 2081],
+            "ExpandedBBOX": [2312, 1862, 2576, 2126]
+        },
+        {
+            "Order": 0,
+            "SaveID": 0,
+            "ID": "94774e9defa0013d0dbc299f6609b40a",
+            "DESCRIPTION": "",
+            "Group": "None",
+            "SearchBBOX": [3207, 2439, 3416, 2648],
+            "ExpandedBBOX": [3180, 2412, 3444, 2676]
+        },
+        {
+            "Order": 0,
+            "SaveID": 0,
+            "ID": "4d1f2ca6b2f66d7b67bcc2bbba5ee632",
+            "DESCRIPTION": "Super Destroyer",
+            "Group": "None",
+            "SearchBBOX": [615, 2535, 824, 2744],
+            "ExpandedBBOX": [588, 2508, 852, 2772]
+        },
+        {
+            "Order": 10,
+            "SaveID": 83,
+            "ID": "0b42ba96081cd0801034c669e76d98ba",
+            "DESCRIPTION": "Laser Sentry",
+            "Group": "defense",
+            "SearchBBOX": [1481, 2555, 1681, 2724],
+            "ExpandedBBOX": [1449, 2508, 1713, 2772]
+        },
+        {
+            "Order": 11,
+            "SaveID": 92,
+            "ID": "71732f46e924c81404d37309113e85f2",
+            "DESCRIPTION": "Cargo Container",
+            "Group": "mission",
+            "SearchBBOX": [1191, 2535, 1401, 2744],
+            "ExpandedBBOX": [1164, 2508, 1428, 2772]
+        },
+        {
+            "Order": 16,
+            "SaveID": 64,
+            "ID": "0193e831a4132041175dc5433da800ac",
+            "DESCRIPTION": "Gas Mines",
+            "Group": "defense",
+            "SearchBBOX": [3775, 3011, 4000, 3216],
+            "ExpandedBBOX": [3756, 2974, 4020, 3238]
+        },
+        {
+            "Order": 17,
+            "SaveID": 63,
+            "ID": "dbd4bd01c2ed7ef05cf81a087d5d50fb",
+            "DESCRIPTION": "Incendiary Mines",
+            "Group": "defense",
+            "SearchBBOX": [2047, 2971, 2272, 3120],
+            "ExpandedBBOX": [2023, 2879, 2287, 3143]
+        },
+        {
+            "Order": 14,
+            "SaveID": 27,
+            "ID": "0dbf12c83fc372da3bac4d8ce8b26cb7",
+            "DESCRIPTION": "Anti-Personnel Minefield",
+            "Group": "defense",
+            "SearchBBOX": [3487, 3119, 3712, 3216],
+            "ExpandedBBOX": [3470, 2975, 3734, 3239]
+        },
+        {
+            "Order": 0,
+            "SaveID": 0,
+            "ID": "b16c7e0dd009726a0c42d7d308e4eadc",
+            "DESCRIPTION": "Temp Box",
+            "Group": "DEFAULT",
+            "SearchBBOX": [2728, 728, 2967, 967],
+            "ExpandedBBOX": [2716, 716, 2980, 980]
+        },
+        {
+            "Order": 0,
+            "SaveID": 0,
+            "ID": "e748916bb76cc63398b1d9ede1476dd5",
+            "DESCRIPTION": "",
+            "Group": "DEFAULT",
+            "SearchBBOX": [2047, 3227, 2273, 3364],
+            "ExpandedBBOX": [2028, 3164, 2292, 3428]
+        },
+        {
+            "Order": 0,
+            "SaveID": 94,
+            "ID": "5fd4a73f731ca817b0366313dd2b6861",
+            "DESCRIPTION": "Bastion Tank MK2",
+            "Group": "supply",
+            "SearchBBOX": [2458, 775, 2658, 941],
+            "ExpandedBBOX": [2425, 715, 2689, 979]
+        },
+        {
+            "Order": 0,
+            "SaveID": 95,
+            "ID": "b6a36581529479f18d4216ff9c67b7ea",
+            "DESCRIPTION": "Breaching Hammer",
+            "Group": "supply",
+            "SearchBBOX": [2049, 1766, 2270, 1943],
+            "ExpandedBBOX": [2028, 1723, 2292, 1987]
+        },
+        {
+            "Order": 0,
+            "SaveID": 96,
+            "ID": "009aeaf5ad32d1762b0af962eb8be44b",
+            "DESCRIPTION": "Belt-Fed Grenade Launcher",
+            "Group": "supply",
+            "SearchBBOX": [315, 1402, 552, 1560],
+            "ExpandedBBOX": [302, 1349, 566, 1613]
+        },
+        {
+            "Order": 0,
+            "SaveID": 0,
+            "ID": "4eb260639059bb5fbd3adadb9a7b5980",
+            "DESCRIPTION": "",
+            "Group": "none",
+            "SearchBBOX": [2391, 1639, 2504, 1810],
+            "ExpandedBBOX": [2316, 1593, 2580, 1857]
+        },
+        {
+            "Order": 0,
+            "SaveID": 0,
+            "ID": "6b3511cb6347358d882cd3d432a40b83",
+            "DESCRIPTION": "",
+            "Group": "none",
+            "SearchBBOX": [1527, 1703, 1640, 1874],
+            "ExpandedBBOX": [1449, 1642, 1713, 1906]
+        },
+        {
+            "Order": 0,
+            "SaveID": 97,
+            "ID": "13a1e51d51cc9e63ad08baf1c8c8e974",
+            "DESCRIPTION": "Leveller",
+            "Group": "supply",
+            "SearchBBOX": [2330, 1353, 2570, 1519],
+            "ExpandedBBOX": [2318, 1304, 2582, 1568]
+        },
+        {
+            "Order": 0,
+            "SaveID": 0,
+            "ID": "e8c68ff0a392563126da6a6f3ee2f753",
+            "DESCRIPTION": "",
+            "Group": "None",
+            "SearchBBOX": [331, 1691, 520, 1864],
+            "ExpandedBBOX": [294, 1646, 558, 1910]
+        },
+        {
+            "Order": 0,
+            "SaveID": 0,
+            "ID": "3a6c610a9ed462115b9ad1d6fc61003e",
+            "DESCRIPTION": "",
+            "Group": "None",
+            "SearchBBOX": [663, 1703, 776, 1874],
+            "ExpandedBBOX": [587, 1645, 851, 1909]
+        },
+        {
+            "Order": 0,
+            "SaveID": 99,
+            "ID": "29a3ed23a04b70d351c475e9589b791f",
+            "DESCRIPTION": "Gas Mortar Sentry",
+            "Group": "defense",
+            "SearchBBOX": [2350, 2778, 2545, 2949],
+            "ExpandedBBOX": [2316, 2732, 2580, 2996]
+        },
+        {
+            "Order": 0,
+            "SaveID": 102,
+            "ID": "287a4c12260e1d86269ca12fefeb3470",
+            "DESCRIPTION": "Bullet Storm",
+            "Group": "supply",
+            "SearchBBOX": [2631, 1347, 2840, 1528],
+            "ExpandedBBOX": [2604, 1306, 2868, 1570]
+        }
+    ]
+}
