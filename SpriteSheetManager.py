@@ -14,7 +14,7 @@ from CTkListbox import *
 from tktooltip import ToolTip
 import platform
 
-version = "0.1.0"
+version = "0.1.4"
 
 fgroundbutton = ("RoyalBlue2", "RoyalBlue4")
 hoverbutton = ("RoyalBlue3", "RoyalBlue3")
@@ -24,6 +24,7 @@ class SheetManagerGUI(ctk.CTk, Tkdnd.TkinterDnD.DnDWrapper):
     def __init__(self):
         super().__init__()
         print("Platform:",platform.system(), platform.machine(), platform.version())
+        Tkdnd.TkinterDnD.DnDWrapper.__init__(self)
         self.TkdndVersion = Tkdnd.TkinterDnD._require(self)
         
         ctk.set_appearance_mode("dark")
@@ -33,7 +34,18 @@ class SheetManagerGUI(ctk.CTk, Tkdnd.TkinterDnD.DnDWrapper):
         self.title("HD2 Sprite Sheet Manager v" + version)
         self.geometry("1200x800")
 
+        self.thumbnail_refs = []
+        self.selected_version_path = None
+
+    
         self.sheet_path = Path("./originals")
+        if not self.sheet_path.exists():
+            os.makedirs(self.sheet_path)
+        for folders in self.sheet_path.iterdir():
+            for subfolders in folders.iterdir():
+                if subfolders.is_dir() and subfolders.name == "original":
+                    shutil.move(folders / subfolders.name, folders / "current")
+
         self.mod_path = Path("./mods")
         self.sheet_path.mkdir(exist_ok=True)
 
@@ -66,9 +78,11 @@ class SheetManagerGUI(ctk.CTk, Tkdnd.TkinterDnD.DnDWrapper):
     def create_top_buttons(self):
         frame = ctk.CTkFrame(self)
         frame.pack(fill="x", anchor="nw",expand=False)
+        frame.grid_columnconfigure(0, weight=1)
+        frame.grid_columnconfigure(1, weight=1)
 
         btn_card_frame = ctk.CTkFrame(frame)
-        btn_card_frame.pack(side="left", padx=10, pady=5, fill="both", expand=True)
+        btn_card_frame.grid(row=0, column=0, sticky="nsew")
 
         # ACTION BUTTONS (start disabled)
         ctk.CTkLabel(btn_card_frame, text="Sheet Tools", font=("Segoe UI", 12, "bold")).pack(side="top", padx=10, expand=True)
@@ -96,15 +110,24 @@ class SheetManagerGUI(ctk.CTk, Tkdnd.TkinterDnD.DnDWrapper):
                                            border_color="black",
                                            border_width=2)
         ToolTip(self.btn_add_icons, msg="Capture and name icon positions on the selected sheet. Each icon selected here will be used when finding new positions during a sheet update.", delay=0.5)
-        self.btn_sheet_list = [self.btn_select_update, self.btn_add_icons]
+        self.btn_revert_icons = ctk.CTkButton(btn_frame, 
+                                           text="Revert Sheet and Mods",
+                                           image = ImageTk.PhotoImage(Image.open(packed_resource("./icons/revert.png")).resize((20,20))),
+                                           state="disabled", 
+                                           command=self.revert_icon_positions,
+                                           fg_color=fgroundbutton,
+                                           hover_color=hoverbutton,
+                                           border_color="black",
+                                           border_width=2)
+        ToolTip(self.btn_add_icons, msg="Revert Sheet to a previous version.", delay=0.5)
+        self.btn_sheet_list = [self.btn_select_update, self.btn_revert_icons, self.btn_add_icons]
 
         btn_mod_card_frame = ctk.CTkFrame(frame)
-        btn_mod_card_frame.pack(side="left", padx=10, pady=5, fill="both", expand=True, anchor="w")
+        btn_mod_card_frame.grid(column=1, row=0, sticky="nsew")
 
         ctk.CTkLabel(btn_mod_card_frame, text="Mod Sheet Tools", font=("Segoe UI", 12, "bold")).pack(side="top", padx=10, expand=True)
         mod_btn_frame = ctk.CTkFrame(btn_mod_card_frame)
         mod_btn_frame.grid_columnconfigure(0, weight=1)
-        mod_btn_frame.grid_columnconfigure(1, weight=1)
         mod_btn_frame.pack(side="top", padx=10, pady=5, fill="both", expand=True)
 
         self.btn_edit_mod_icons = ctk.CTkButton(mod_btn_frame, 
@@ -145,7 +168,7 @@ class SheetManagerGUI(ctk.CTk, Tkdnd.TkinterDnD.DnDWrapper):
             btn.grid(row=i, column=0, padx=5, pady=5, sticky="ew")
         
         for i,btn in enumerate(self.btn_mod_sheet_list):
-            btn.grid(row=i//2, column=i%2, padx=5, pady=5, sticky="ew")
+            btn.grid(row=i, column=0, padx=5, pady=5, sticky="ew")
 
     # ------------------------------- MAIN CONTENT -------------------------------
     def create_content(self):
@@ -224,7 +247,8 @@ class SheetManagerGUI(ctk.CTk, Tkdnd.TkinterDnD.DnDWrapper):
         self.btn_export_icons.grid(row=5, column=0, sticky="ew", padx=xpad, pady=ypad)
         self.btn_sheet_list.append(self.btn_export_icons)
         #Right button
-        self.new_moded_sheets_button = ctk.CTkButton(listboxes, 
+        new_copy_form = ctk.CTkFrame(listboxes)
+        self.new_moded_sheets_button = ctk.CTkButton(new_copy_form, 
                                                  text="New Mod", 
                                                  image = ImageTk.PhotoImage(Image.open(packed_resource("./icons/plus.png")).resize((20,20))),
                                                  command=self.create_new_mod_folder,
@@ -233,9 +257,25 @@ class SheetManagerGUI(ctk.CTk, Tkdnd.TkinterDnD.DnDWrapper):
                                            border_color="black",
                                            border_width=2)
         ToolTip(self.new_moded_sheets_button, msg="Create and name a new mod to be managed.", delay=0.5)
-        self.new_moded_sheets_button.grid(row=2, column=1, sticky="ew", padx=xpad, pady=ypad)
+        self.new_moded_sheets_button.pack(side="left", padx=(0,xpad/2), pady=ypad, fill="y")
+        self.copy_moded_sheets_button = ctk.CTkButton(new_copy_form, 
+                                                 text="Copy Mod", 
+                                                 image = ImageTk.PhotoImage(Image.open(packed_resource("./icons/copy.png")).resize((20,20))),
+                                                 command=self.copy_mod_folder,
+                                                 state="disabled",
+                                           fg_color=fgroundbutton,
+                                           hover_color=hoverbutton,
+                                           border_color="black",
+                                           border_width=2)
+        ToolTip(self.copy_moded_sheets_button, msg="Copy an existing mod.", delay=0.5)
+        self.copy_moded_sheets_button.pack(padx=(xpad/2,0), pady=ypad, fill="y")
+        self.btn_mod_only_list.append(self.copy_moded_sheets_button)
+        new_copy_form.grid(row=2, column=1, sticky="ew", padx=xpad, pady=ypad)
 
-        self.moded_sheets_del_button = ctk.CTkButton(listboxes, 
+        
+    
+        del_rename_form = ctk.CTkFrame(listboxes)
+        self.moded_sheets_del_button = ctk.CTkButton(del_rename_form, 
                                                     text="Delete Mod", 
                                                     image = ImageTk.PhotoImage(Image.open(packed_resource("./icons/delete.png")).resize((20,20))),
                                                     command=self.delete_mod_folder,
@@ -245,8 +285,25 @@ class SheetManagerGUI(ctk.CTk, Tkdnd.TkinterDnD.DnDWrapper):
                                                     border_color="black",
                                                     border_width=2)
         ToolTip(self.moded_sheets_del_button, msg="Delete the currently selected mod and all sheets.", delay=0.5)
-        self.moded_sheets_del_button.grid(row=3, column=1, sticky="ew", padx=xpad, pady=ypad)
+        self.moded_sheets_del_button.pack(side="left", padx=(0,xpad/2), pady=ypad, fill="y")
         self.btn_mod_only_list.append(self.moded_sheets_del_button)
+        self.rename_sheets_button = ctk.CTkButton(del_rename_form, 
+                                                text="Rename Mod", 
+                                                image = ImageTk.PhotoImage(Image.open(packed_resource("./icons/rename.png")).resize((20,20))),
+                                                command=self.rename_mod_folder,
+                                                state="disabled",
+                                           fg_color=fgroundbutton,
+                                           hover_color=hoverbutton,
+                                           border_color="black",
+                                           border_width=2)
+        ToolTip(self.rename_sheets_button, msg="Rename a mod to be managed.", delay=0.5)
+        self.rename_sheets_button.pack(padx=(xpad/2,0), pady=ypad, fill="y")
+        self.btn_mod_only_list.append(self.rename_sheets_button)
+
+        del_rename_form.grid(row=3, column=1, sticky="ew", padx=xpad, pady=ypad)
+
+
+        
         self.btn_export_mod_sheet = ctk.CTkButton(listboxes, text="Export Mod Sheets", state="disabled", command=lambda: self.export_modded_sheet(export_icons=False),
                                            fg_color=fgroundbutton,
                                            hover_color=hoverbutton,
@@ -360,24 +417,29 @@ class SheetManagerGUI(ctk.CTk, Tkdnd.TkinterDnD.DnDWrapper):
         if self.selected_mod is not None:
             if self.selected_sheet:
                 for btn in self.btn_mod_only_list:
-                    btn.configure(state="normal")
+                    if btn.cget("state") != "normal": # if the button is not disabled
+                        btn.configure(state="normal")
                 for btn in self.btn_mod_sheet_list:
-                    btn.configure(state="normal")
+                    if btn.cget("state") != "normal": # if the button is not disabled
+                        btn.configure(state="normal")
             else:
                 for btn in self.btn_mod_only_list:
-                    btn.configure(state="normal")
+                    if btn.cget("state") != "normal": # if the button is not disabled
+                        btn.configure(state="normal")
                 for btn in self.btn_mod_sheet_list:
-                    btn.configure(state="disabled")
+                    if btn.cget("state") != "disabled": # if the button is not disabled
+                        btn.configure(state="disabled")
         else:
             for btn in self.btn_mod_only_list:
-                btn.configure(state="disabled")
+                if btn.cget("state") != "disabled": # if the button is not disabled
+                    btn.configure(state="disabled")
             for btn in self.btn_mod_sheet_list:
-                btn.configure(state="disabled")
+                if btn.cget("state") != "disabled": # if the button is not disabled
+                    btn.configure(state="disabled")
             if self.moded_sheet_listbox.curselection() is not None:
                 self.moded_sheet_listbox.deactivate("all")
         # Enable buttons
-        if self.selected_sheet and self.selected_mod:
-            self.load_mod_preview()
+        self.load_mod_preview()
     def find_scale(self, canvas, image):
 
         orig_width, orig_height = image.size
@@ -390,7 +452,7 @@ class SheetManagerGUI(ctk.CTk, Tkdnd.TkinterDnD.DnDWrapper):
         if not self.selected_sheet:
             self.preview_canvas.delete("all")
             return
-        selected_sheet_path = self.sheet_path / self.selected_sheet / "original" / f"{self.selected_sheet}.png"
+        selected_sheet_path = self.sheet_path / self.selected_sheet / "current" / f"{self.selected_sheet}.png"
         if selected_sheet_path.exists():
             self.preview_image = Image.open(selected_sheet_path)
             new_width, new_height = self.find_scale(self.preview_canvas, self.preview_image)
@@ -426,7 +488,7 @@ class SheetManagerGUI(ctk.CTk, Tkdnd.TkinterDnD.DnDWrapper):
             if (Path(self.sheet_path) / new_folder_name).exists():
                 messagebox.showerror("Error", "A sheet with the same name already exists.")
                 return
-        new_path = self.sheet_path / new_folder_name / "original"
+        new_path = self.sheet_path / new_folder_name / "current"
         old_path = None
         if new_path.exists():
             temp_path = self.sheet_path / new_folder_name / "old"
@@ -453,7 +515,12 @@ class SheetManagerGUI(ctk.CTk, Tkdnd.TkinterDnD.DnDWrapper):
                 shutil.rmtree(mod_folder / self.selected_sheet)
         self.load_sheet_list()
         self.on_sheet_select(None)
-        
+    
+    def copy_mod_folder(self):
+        if not self.selected_mod:
+            return
+        shutil.copytree(self.mod_path / self.selected_mod, self.mod_path / f"{self.selected_mod} copy")
+        self.load_mod_sheet_list(reset=True)
     
     def create_new_mod_folder(self):
         mod_name = simpledialog.askstring("Input", "Enter Mod Name", parent=self)
@@ -463,9 +530,24 @@ class SheetManagerGUI(ctk.CTk, Tkdnd.TkinterDnD.DnDWrapper):
         if not modded_path.exists():
             modded_path.mkdir(parents=True, exist_ok=True)
         else:
-            messagebox.showerror("Error", "Mod already exists.")
+            messagebox.showerror("Error", "Mod name already exists.")
             return None
         self.load_mod_sheet_list(reset=True)
+
+    def rename_mod_folder(self):
+        old_modded_path = self.mod_path / self.selected_mod
+        if not self.selected_mod or not old_modded_path.exists():
+            return
+        mod_name = simpledialog.askstring("Input", "Enter Mod Name", parent=self)
+        if not mod_name:
+            return
+        new_modded_path = self.mod_path / mod_name
+        if new_modded_path.exists():
+            messagebox.showerror("Error", "Mod name already exists.")
+            return None
+        os.rename(old_modded_path, new_modded_path)
+        self.load_mod_sheet_list(reset=True)
+
     
     def delete_mod_folder(self):
         if not self.selected_mod:
@@ -478,6 +560,187 @@ class SheetManagerGUI(ctk.CTk, Tkdnd.TkinterDnD.DnDWrapper):
         self.selected_mod = None
         self.load_mod_sheet_list(reset=True)
 
+    from PIL import ImageTk  # Required for displaying images in Tkinter
+
+
+    def askWhatVersion(self, modded_sheet_path):
+        """Displays the modded sheet side-by-side with the top 3 versions in high-detail columns.
+
+        Uses Canvas to ensure images are prominent and easy to see.
+        """
+        base_path = self.sheet_path / self.selected_sheet
+        versions = []
+
+        # 1. GATHER TOP 3 (Latest + 2 History)
+        current_path = base_path / "current"
+        if current_path.is_dir():
+            versions.append(("LATEST", current_path))
+
+        old_folders = []
+        for item in base_path.iterdir():
+            if item.is_dir() and (item.name == "old" or item.name.startswith("old_")):
+                try:
+                    num = (
+                        0
+                        if item.name == "old"
+                        else int(item.name.split("_")[-1])
+                    )
+                    old_folders.append((num, item))
+                except:
+                    continue
+
+        old_folders.sort(key=lambda x: x[0], reverse=True)
+        history_labels = ["SECOND LATEST", "THIRD LATEST"]
+        for i, (_, path) in enumerate(old_folders[:2]):
+            versions.append((history_labels[i], path))
+
+        # 2. CREATE FULL-SCREEN POPUP
+        popup = ctk.CTkToplevel(self)
+        popup.title("Select Original Version")
+
+        screen_w = self.winfo_screenwidth()
+        screen_h = self.winfo_screenheight()
+        popup.geometry(f"{int(screen_w*0.9)}x{int(screen_h*0.75)}")
+
+        popup.attributes("-topmost", True)
+        popup.grab_set()
+        popup.focus_force()
+
+        header = ctk.CTkLabel(
+            popup,
+            text="COMPARE AND SELECT THE SOURCE VERSION",
+            font=("Impact", 28),
+        )
+        header.pack(pady=20)
+
+        main_container = ctk.CTkFrame(popup, fg_color="transparent")
+        main_container.pack(fill="both", expand=True, padx=10, pady=10)
+
+        self.thumbnail_refs = []
+
+        # Calculate width based on total columns (3 history options + 1 reference column)
+        total_cols = len(versions) + (1 if modded_sheet_path else 0)
+        target_w = int((screen_w * 0.9) / total_cols) - 50
+
+        # ==========================================
+        # MODDED SHEET IMAGE COLUMN
+        # ==========================================
+        if modded_sheet_path:
+            mod_col = ctk.CTkFrame(
+                main_container,
+                fg_color="#2b1a1a",
+                border_width=2,
+                border_color="#552222",
+            )
+            mod_col.pack(side="left", fill="both", expand=True, padx=5)
+
+            ctk.CTkLabel(
+                mod_col,
+                text="YOUR NEW MODDED SHEET",
+                font=("Arial", 18, "bold"),
+                text_color="#ff6b6b",
+            ).pack(pady=10)
+
+            try:
+                img = Image.open(modded_sheet_path)
+                w_percent = target_w / float(img.size[0])
+                h_size = int((float(img.size[1]) * float(w_percent)))
+
+                img = img.resize((target_w, h_size), Image.Resampling.LANCZOS)
+                tk_img = ImageTk.PhotoImage(img)
+                self.thumbnail_refs.append(tk_img)
+
+                canvas = tk.Canvas(
+                    mod_col,
+                    width=target_w,
+                    height=h_size,
+                    bg="#1a1a1a",
+                    highlightthickness=0,
+                )
+                canvas.pack(pady=10, padx=10, expand=True)
+                canvas.create_image(0, 0, anchor="nw", image=tk_img)
+
+                ctk.CTkLabel(
+                    mod_col,
+                    text="Incoming File\n(Reference Window)",
+                    font=("Arial", 12, "italic"),
+                    text_color="#aaa",
+                ).pack(pady=25)
+
+            except Exception as e:
+                ctk.CTkLabel(mod_col, text="Error Loading Modded Image").pack(
+                    pady=50
+                )
+
+            # Visual splitter boundary between incoming file and options
+            sep = ctk.CTkFrame(main_container, width=3, fg_color="#552222")
+            sep.pack(side="left", fill="y", pady=30, padx=5)
+
+        # ==========================================
+        # COMPARE SELECTION COLUMNS
+        # ==========================================
+        for i, (name, path) in enumerate(versions):
+            col = ctk.CTkFrame(
+                main_container,
+                fg_color="#1a1a1a",
+                border_width=2,
+                border_color="#333",
+            )
+            col.pack(side="left", fill="both", expand=True, padx=5)
+
+            ctk.CTkLabel(
+                col, text=name, font=("Arial", 18, "bold"), text_color="#3a7ebf"
+            ).pack(pady=10)
+
+            png_files = list(path.glob("*.png"))
+            if png_files:
+                try:
+                    img = Image.open(png_files[0])
+                    w_percent = target_w / float(img.size[0])
+                    h_size = int((float(img.size[1]) * float(w_percent)))
+
+                    img = img.resize((target_w, h_size), Image.Resampling.LANCZOS)
+                    tk_img = ImageTk.PhotoImage(img)
+                    self.thumbnail_refs.append(tk_img)
+
+                    canvas = tk.Canvas(
+                        col,
+                        width=target_w,
+                        height=h_size,
+                        bg="#1a1a1a",
+                        highlightthickness=0,
+                    )
+                    canvas.pack(pady=10, padx=10, expand=True)
+                    canvas.create_image(0, 0, anchor="nw", image=tk_img)
+
+                    canvas.bind(
+                        "<Button-1>",
+                        lambda e, p=path: self.confirm_version_selection(p, popup),
+                    )
+                except Exception as e:
+                    ctk.CTkLabel(col, text="Error Loading Image").pack(pady=50)
+
+            ctk.CTkButton(
+                col,
+                text="USE THIS VERSION",
+                font=("Arial", 14, "bold"),
+                fg_color="#2b2b2b",
+                hover_color="#1f538d",
+                command=lambda p=path: self.confirm_version_selection(p, popup),
+            ).pack(pady=20, padx=20, fill="x")
+
+            if i < len(versions) - 1:
+                sep = ctk.CTkFrame(main_container, width=2, fg_color="#333")
+                sep.pack(side="left", fill="y", pady=50)
+
+        # Holds processing right here until the user selects an asset or drops window
+        self.wait_window(popup)
+
+    def confirm_version_selection(self, path, window):
+        self.selected_version_path = path
+        window.destroy()
+        
+
     def import_modded_sheet(self):
         if not self.selected_mod or not self.selected_sheet:
             return
@@ -485,7 +748,7 @@ class SheetManagerGUI(ctk.CTk, Tkdnd.TkinterDnD.DnDWrapper):
 
         if not modded_sheet:
             return
-
+        orig_path = self.sheet_path / self.selected_sheet / "current"
         dest_path = self.mod_path / self.selected_mod / self.selected_sheet / "current"
         if not dest_path.exists():
             os.makedirs(dest_path)
@@ -494,9 +757,14 @@ class SheetManagerGUI(ctk.CTk, Tkdnd.TkinterDnD.DnDWrapper):
                 return
             shutil.rmtree(dest_path)
             os.makedirs(dest_path)
+        
+        self.askWhatVersion(modded_sheet)
         destfile = dest_path / f"{self.selected_sheet}.png"
-        loadedsheet = Image.open(modded_sheet) #in case not png
-        loadedsheet.save(destfile, "png")
+        newsheet = f"{orig_path}\\{self.selected_sheet}.png"
+        oldjson = f"{self.selected_version_path}\\{self.selected_sheet}.json"
+        newjson = f"{orig_path}\\{self.selected_sheet}.json"
+        IconF.migrate_mod_sheet_with_base(oldjson, newjson, modded_sheet, newsheet, destfile)
+
         self.load_mod_sheet_list()
         self.load_mod_preview()
     def delete_modded_sheet(self):
@@ -532,7 +800,7 @@ class SheetManagerGUI(ctk.CTk, Tkdnd.TkinterDnD.DnDWrapper):
                         os.makedirs(export_path / self.selected_mod)
                     shutil.copy2(file, export_path / self.selected_mod/ file.name)
                 else:
-                    jsonpath = self.sheet_path / mod_folder.name / "original"/ f"{mod_folder.name}.json"
+                    jsonpath = self.sheet_path / mod_folder.name / "current"/ f"{mod_folder.name}.json"
                     ei.crop_images(self.selected_mod, export_path, jsonpath, file)
 
     def export_sheet(self, export_icons=False):
@@ -543,13 +811,13 @@ class SheetManagerGUI(ctk.CTk, Tkdnd.TkinterDnD.DnDWrapper):
         if not export_path:
             return
         newpath = export_path / self.selected_sheet
-        sheetpath = self.sheet_path / self.selected_sheet / "original" / f"{self.selected_sheet}.png"
+        sheetpath = self.sheet_path / self.selected_sheet / "current" / f"{self.selected_sheet}.png"
         if not newpath.exists():
             os.makedirs(newpath)
         if not export_icons:
             shutil.copy2(sheetpath, newpath)
         else:
-            jsonpath = self.sheet_path / self.selected_sheet / "original"/ f"{self.selected_sheet}.json"
+            jsonpath = self.sheet_path / self.selected_sheet / "current"/ f"{self.selected_sheet}.json"
             ei.crop_images(self.selected_sheet, export_path, jsonpath, sheetpath)
 
 
@@ -562,21 +830,71 @@ class SheetManagerGUI(ctk.CTk, Tkdnd.TkinterDnD.DnDWrapper):
         newsheet = f"{newpath}\\{self.selected_sheet}.png"
         oldjson = f"{oldpath}\\{self.selected_sheet}.json"
         newjson = f"{newpath}\\{self.selected_sheet}.json"
-        IconF.main([oldsheet,newsheet,oldjson,newjson,self.mod_path])
-        if self.selected_sheet in self.sheet_listbox.get(0, tk.END):
-            index = self.sheet_listbox.get(0, tk.END).index(self.selected_sheet)
-            self.sheet_listbox.selection_set(index)
+        IconF.main(oldsheet,newsheet,oldjson,newjson,self.mod_path)
         self.load_image_preview()
 
 
     def modify_icon_positions(self):
-        image_path = self.sheet_path / self.selected_sheet / "original" / f"{self.selected_sheet}.png"
-        save_path = self.sheet_path / self.selected_sheet / "original"
+        image_path = self.sheet_path / self.selected_sheet / "current" / f"{self.selected_sheet}.png"
+        save_path = self.sheet_path / self.selected_sheet / "current"
         AddIcon.viewMode(image_path,save_path,self.selected_sheet)
 
+    def revert_icon_positions(self):
+        sheet_path = self.sheet_path / self.selected_sheet
+        if not sheet_path.is_dir():
+            return
+        if not messagebox.askokcancel("Delete", "Are you sure you want to revert this sheet? This cannot be undone. All mods attached to this sheet will be reverted as well."):
+            return
+        # Collect the main sheet path and any relevant mod paths
+        allpaths = [sheet_path]
+        if self.mod_path.exists():
+            for modfolders in self.mod_path.iterdir():
+                target_sub = modfolders / self.selected_sheet
+                if target_sub.is_dir():
+                    allpaths.append(target_sub)
+
+        for folder_path in allpaths:
+            current_folder = folder_path / "current"
+            old_current_path = folder_path / "oldcurrent"
+            
+            if not current_folder.is_dir():
+                continue
+
+            old_folders = []
+            for item in folder_path.iterdir():
+                if item.is_dir():
+                    if item.name == "old":
+                        old_folders.append((0, item))
+                    elif item.name.startswith("old_"):
+                        try:
+                            num = int(item.name.split('_')[-1])
+                            old_folders.append((num, item))
+                        except ValueError:
+                            continue 
+
+            if not old_folders:
+                if folder_path == sheet_path:
+                    messagebox.showerror("Error", f"No history for this sheet")
+                    return
+                continue
+
+            # Clean up existing 'oldcurrent' so the rename doesn't fail
+            if old_current_path.exists():
+                shutil.rmtree(old_current_path)
+
+            # 1. Move current to oldcurrent
+            current_folder.rename(old_current_path)
+
+            # 2. Find and move highest numbered old folder to current
+            _, target_folder = max(old_folders, key=lambda x: x[0])
+            target_folder.rename(current_folder)
+
+        self.load_image_preview()
+        
+
     def modify_mod_icons(self):
-        image_path = self.sheet_path / self.selected_sheet / "original" / f"{self.selected_sheet}.png"
-        save_path = self.sheet_path / self.selected_sheet / "original"
+        image_path = self.sheet_path / self.selected_sheet / "current" / f"{self.selected_sheet}.png"
+        save_path = self.sheet_path / self.selected_sheet / "current"
         mod_image_path = self.mod_path / self.selected_mod / self.selected_sheet / "current" / f"{self.selected_sheet}.png"
         if not mod_image_path.exists():
             mod_image_path.parent.mkdir(parents=True, exist_ok=True)

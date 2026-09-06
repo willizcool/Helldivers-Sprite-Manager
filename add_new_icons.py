@@ -355,8 +355,8 @@ class ImageViewer:
         if xsize <= 0 or ysize <= 0:
             print(f"Invalid box size after scaling: ({xsize}, {ysize})")
             return
-
-        self.bbox_list.append(bboxs)
+        if not forcedraw:
+            self.bbox_list.append(bboxs)
 
         # Create a transparent image for the box overlay
         box_img = Image.new('RGBA', (xsize, ysize), (0, 0, 0, 0))  # fully transparent

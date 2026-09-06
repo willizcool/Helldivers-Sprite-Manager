@@ -5,6 +5,7 @@ from PIL import Image
 import numpy as np
 import cv2, sys, shutil
 from pathlib import Path
+import customtkinter as ctk
 
 class mod_image():
         def __init__(self, oldimage :Image, newimage :Image, location :Path):
@@ -12,27 +13,18 @@ class mod_image():
             self.newimage = newimage
             self.location = location
 class SpriteLocatorApp:
-    def __init__(self, master, *args):
-        self.master = master
-        
-        master.title("Sprite Locator")
+    def __init__(self, oldsheet,newsheet,oldjson,newjson,mod_path):
         self.data = None
         self.sprite_images = {}
         self.source_sheet = None
         self.new_sheet = None
 
-        if len(args) >= 5:
-            self.load_json(args[2])
-            self.load_source_sheet(args[0])
-            self.extract_sprites()
-            self.load_new_sheet(args[1])
-            self.locate_sprites(args[3],args[4])
-        else:
-            tk.Button(master, text="Load JSON Data", command=self.load_json).pack(fill="x")
-            tk.Button(master, text="Load Source Sheet PNG", command=self.load_source_sheet).pack(fill="x")
-            tk.Button(master, text="Extract & Save Cropped Sprites", command=lambda: self.extract_sprites()).pack(fill="x")
-            tk.Button(master, text="Load New Sheet PNG", command=self.load_new_sheet).pack(fill="x")
-            tk.Button(master, text="Locate Sprites on New Sheet", command=self.locate_sprites).pack(fill="x")
+        self.load_json(oldjson)
+        self.load_source_sheet(oldsheet)
+        self.extract_sprites()
+        self.load_new_sheet(newsheet)
+        self.locate_sprites(newjson,mod_path)
+    
 
     # ------------------------
     # LOAD JSON
@@ -121,8 +113,7 @@ class SpriteLocatorApp:
         original = self.data
         updated_details = []
         # Create loading window
-        self.master.withdraw()
-        loading_window = tk.Toplevel()
+        loading_window = ctk.CTkToplevel()
         loading_window.title("Processing...")
         loading_window.grab_set()
         loading_window.resizable(False, False)
@@ -135,21 +126,18 @@ class SpriteLocatorApp:
         loading_window.geometry(f"{w}x{h}+{x}+{y}")
 
         # --- Layout ---
-        frame = ttk.Frame(loading_window, padding=20)
+        frame = ctk.CTkFrame(loading_window)
         frame.pack(fill="both", expand=True)
 
-        label = ttk.Label(frame, text="Finding New Locations... (0%)")
+        label = ctk.CTkLabel(frame, text="Finding New Locations... (0%)")
         label.pack(pady=(0, 10))
 
-        progress_var = tk.IntVar(value=0)
-        progressbar = ttk.Progressbar(
+        progressbar = ctk.CTkProgressBar(
             frame,
-            orient="horizontal",
-            length=250,
+            orientation="horizontal",
             mode="determinate",
-            maximum=100,
-            variable=progress_var
         )
+        progressbar.set(0)
         progressbar.pack()
 
         loading_window.update_idletasks()
@@ -157,7 +145,7 @@ class SpriteLocatorApp:
 
         # move icons on modded sheets
         update_mods : list[mod_image] = []
-        if modpath is not None:
+        if modpath is not None and modpath.exists():
             for mod in Path(modpath).iterdir(): #mod directory
                 for sheets in mod.iterdir(): #sheets in mod
                     olddirectory = sheets / "current"
@@ -232,9 +220,9 @@ class SpriteLocatorApp:
                 crop = mod.oldimage.crop(old_expand)
                 mod.newimage.paste(crop, (int(new_expand[0]), int(new_expand[1])))
 
-            progress = int((i / len(original["DETAILS"])) * 100)
-            label.config(text=f"Finding New Locations... ({progress}%)")
-            progress_var.set(progress)
+            progress = (i / len(original["DETAILS"]))
+            label.configure(text=f"Finding New Locations... ({int(progress * 100)}%)")
+            progressbar.set(progress)
             loading_window.update_idletasks()
             loading_window.update()
 
@@ -253,7 +241,6 @@ class SpriteLocatorApp:
             mod.newimage.save(new_path / f"{original['SHEETNAME']}.png")
 
         loading_window.destroy()
-        self.master.deiconify()
 
         # Build full JSON, replacing only DETAILS
         final_json = original.copy()
@@ -263,20 +250,58 @@ class SpriteLocatorApp:
             json.dump(final_json, f, indent=4)
 
 
-# ------------------------
-# RUN APP
-# ------------------------
-def main(args):
-    root = tk.Tk()
-    app = SpriteLocatorApp(root, *args)
-    if args is None:
-        root.mainloop()
-    else:
-        root.destroy()
+def migrate_mod_sheet_with_base(old_json_path, new_json_path, mod_image_path, new_base_sheet_path, out_image_path):
+    """
+    Loads an old modded sheet, extracts modded icons using the old JSON's ExpandedBBOX,
+    and pastes them onto a copy of the NEW original base sheet using the updated JSON's positions.
+    """
+    new_combined_sheet = old_mod_sheet = Image.open(mod_image_path)
+    if old_json_path is not new_json_path:
+        # 1. Load both JSON layouts
+        with open(old_json_path, "r") as f:
+            old_data = json.load(f)
+            
+        with open(new_json_path, "r") as f:
+            new_data = json.load(f)
+        
+        # We copy the new original base sheet so we don't overwrite the original source asset
+        new_combined_sheet = Image.open(new_base_sheet_path).copy()
 
-if __name__ == "__main__":
-    args = sys.argv[1:]
-    main(args)
+        # 3. Map the new positions by ID for O(1) matching efficiency
+        new_positions = {entry["ID"]: entry["ExpandedBBOX"] for entry in new_data["DETAILS"]}
+
+        print("Migrating modded icons onto the new base sheet layout...")
+        
+        # 4. Extract from old mod positions and paste onto the new base canvas
+        for entry in old_data["DETAILS"]:
+            sprite_id = entry["ID"]
+            old_bbox = entry["ExpandedBBOX"]
+
+            # Only process if this icon still exists in the new version setup
+            if sprite_id in new_positions:
+                new_bbox = new_positions[sprite_id]
+
+                try:
+                    # Crop the modified icon from your old custom sheet
+                    icon_crop = old_mod_sheet.crop(tuple(old_bbox))
+
+                    # Paste it onto the new base sheet at its updated coordinates
+                    # Converting to RGBA ensures alpha transparent masks are preserved properly
+                    paste_x = int(new_bbox[0])
+                    paste_y = int(new_bbox[1])
+                    
+                    new_combined_sheet.paste(icon_crop, (paste_x, paste_y), icon_crop.convert("RGBA"))
+                except Exception as e:
+                    print(f"Skipping {sprite_id}: Error migrating asset ({e})")
+            else:
+                print(f"Notice: Sprite ID '{sprite_id}' is not in the new layout. Skipping.")
+
+    new_combined_sheet.save(out_image_path)
+    print(f"Successfully updated mod sheet! Saved to: {out_image_path}")
+
+
+def main(oldsheet,newsheet,oldjson,newjson,mod_path):
+    app = SpriteLocatorApp(oldsheet,newsheet,oldjson,newjson,mod_path)
 
 
 
